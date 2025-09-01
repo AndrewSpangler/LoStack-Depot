@@ -1,0 +1,23 @@
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    restart: always
+    hostname: uptime-kuma
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Fancy Monitoring Tool
+    - homepage.group=Network Monitoring
+    - homepage.href=https://uptime-kuma.${DOMAINNAME}/
+    - homepage.icon=uptime-kuma
+    - homepage.name=Uptime-kuma
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=uptime-kuma
+    - traefik.enable=true
+    - traefik.http.routers.uptime-kuma.rule=Host(`uptime-kuma.${DOMAINNAME}`)
+    - traefik.http.services.uptime-kuma.loadbalancer.server.port=3001
+    volumes:
+    - ${APPDATA_DIR}/uptime-kuma:/app/data

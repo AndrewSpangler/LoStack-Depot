@@ -1,0 +1,23 @@
+services:
+  thelounge:
+    image: ghcr.io/thelounge/thelounge:latest
+    container_name: thelounge
+    restart: always
+    hostname: thelounge
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=IRC Web Client
+    - homepage.group=IRC
+    - homepage.href=https://thelounge.${DOMAINNAME}/
+    - homepage.icon=thelounge
+    - homepage.name=Thelounge
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=thelounge
+    - traefik.enable=true
+    - traefik.http.routers.thelounge.rule=Host(`thelounge.${DOMAINNAME}`)
+    - traefik.http.services.thelounge.loadbalancer.server.port=9000
+    volumes:
+    - ${APPDATA_DIR}/thelounge:/var/opt/thelounge

@@ -1,0 +1,25 @@
+services:
+  kanboard:
+    image: kanboard/kanboard:latest
+    restart: unless-stopped
+    container_name: kanboard
+    hostname: kanboard
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Visual Task Board
+    - homepage.group=Task Management
+    - homepage.href=https://kanboard.${DOMAINNAME}/
+    - homepage.icon=kanboard
+    - homepage.name=Kanboard
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=kanboard
+    - traefik.enable=true
+    - traefik.http.routers.kanboard.rule=Host(`kanboard.${DOMAINNAME}`)
+    - traefik.http.services.kanboard.loadbalancer.server.port=80
+    volumes:
+    - ${APPDATA_DIR}/kanboard_data:/var/www/app/data
+    - ${APPDATA_DIR}/kanboard_plugins:/var/www/app/plugins
+    - ${APPDATA_DIR}/kanboard_ssl:/etc/nginx/ssl

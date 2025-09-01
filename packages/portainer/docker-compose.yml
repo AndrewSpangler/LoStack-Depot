@@ -1,0 +1,24 @@
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:latest
+    restart: unless-stopped
+    hostname: portainer
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Docker Manager
+    - homepage.group=Admin
+    - homepage.href=https://portainer.${DOMAINNAME}/
+    - homepage.icon=portainer
+    - homepage.name=Portainer
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=portainer
+    - traefik.enable=true
+    - traefik.http.routers.portainer.rule=Host(`portainer.${DOMAINNAME}`)
+    - traefik.http.services.portainer.loadbalancer.server.port=9000
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - ${APPDATA_DIR}/portainer:/data

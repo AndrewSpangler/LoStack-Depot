@@ -1,0 +1,23 @@
+services:
+  actual-budget:
+    image: actualbudget/actual-server:latest
+    restart: unless-stopped
+    container_name: actual-budget
+    hostname: actual-budget
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Personal Finance
+    - homepage.group=Budget
+    - homepage.href=https://actual-budget.${DOMAINNAME}/
+    - homepage.icon=actual-budget
+    - homepage.name=Actual-budget
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=actual-budget
+    - traefik.enable=true
+    - traefik.http.routers.actual-budget.rule=Host(`actual-budget.${DOMAINNAME}`)
+    - traefik.http.services.actual-budget.loadbalancer.server.port=5006
+    volumes:
+    - ${APPDATA_DIR}/actual-budget:/data

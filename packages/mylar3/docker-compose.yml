@@ -1,0 +1,29 @@
+services:
+  mylar3:
+    image: lscr.io/linuxserver/mylar3:latest
+    container_name: mylar3
+    environment:
+    - PUID=1000
+    - PGID=10
+    - TZ=${TZ}
+    restart: unless-stopped
+    hostname: mylar3
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Comic Book Downloader
+    - homepage.group=Video Downloaders
+    - homepage.href=https://mylar3.${DOMAINNAME}/
+    - homepage.icon=mylar
+    - homepage.name=Mylar3
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=mylar3
+    - traefik.enable=true
+    - traefik.http.routers.mylar3.rule=Host(`mylar3.${DOMAINNAME}`)
+    - traefik.http.services.mylar3.loadbalancer.server.port=8090
+    volumes:
+    - ${APPDATA_DIR}/mylar3:/config
+    - ${MEDIA_DIR}/comics:/comics
+    - ${MEDIA_DIR}/downloads/comics:/downloads

@@ -1,0 +1,25 @@
+services:
+  recipya:
+    image: reaper99/recipya:nightly
+    container_name: recipya
+    environment:
+    - RECIPYA_SERVER_PORT=8078
+    restart: unless-stopped
+    hostname: recipya
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Recipe Manager
+    - homepage.group=Recipe Managment
+    - homepage.href=https://recipya.${DOMAINNAME}/
+    - homepage.icon=recipya
+    - homepage.name=Recipya
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=recipya
+    - traefik.enable=true
+    - traefik.http.routers.recipya.rule=Host(`recipya.${DOMAINNAME}`)
+    - traefik.http.services.recipya.loadbalancer.server.port=8078
+    volumes:
+    - ${APPDATA_DIR}/recipya:/root/.config/Recipya

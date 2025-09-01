@@ -1,0 +1,25 @@
+services:
+  reubah:
+    image: ghcr.io/dendianugerah/reubah:latest
+    container_name: reubah
+    hostname: reubah
+    restart: unless-stopped
+    networks:
+    - traefik_network
+    security_opt:
+    - no-new-privileges:true
+    cap_drop:
+    - ALL
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.reubah.rule=Host(`reubah.${DOMAINNAME}`)
+    - traefik.http.services.reubah.loadbalancer.server.port=8081
+    - homepage.name=Reubah
+    - homepage.group=File Conversion
+    - homepage.icon=mdi-autorenew
+    - homepage.description=Bulk File Converter
+    - homepage.href=https://reubah.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=reubah
+    - sablier-station.duration=15m
+    - sablier-station.primary=true

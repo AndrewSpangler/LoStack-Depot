@@ -1,0 +1,24 @@
+services:
+  pingvin-share:
+    image: stonith404/pingvin-share
+    restart: unless-stopped
+    container_name: pingvin-share
+    hostname: pingvin-share
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Beautiful File Sharing
+    - homepage.group=File Transfer
+    - homepage.href=https://pingvin-share.${DOMAINNAME}/
+    - homepage.icon=pingvin-share
+    - homepage.name=Pingvin-share
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=pingvin-share
+    - traefik.enable=true
+    - traefik.http.routers.pingvin-share.rule=Host(`pingvin-share.${DOMAINNAME}`)
+    - traefik.http.services.pingvin-share.loadbalancer.server.port=3000
+    volumes:
+    - ${APPDATA_DIR}/pingvin-share:/opt/app/backend/data
+    - ${MEDIA_DIR}/images:/opt/app/frontend/public/img

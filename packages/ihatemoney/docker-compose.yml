@@ -1,0 +1,27 @@
+services:
+  ihatemoney:
+    image: ihatemoney/ihatemoney:latest
+    container_name: ihatemoney
+    environment:
+    - PORT=8000
+    - PUID=0
+    - PGID=0
+    restart: unless-stopped
+    hostname: ihatemoney
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Manage Shared Expenses
+    - homepage.group=Budget
+    - homepage.href=https://ihatemoney.${DOMAINNAME}/
+    - homepage.icon=ihatemoney
+    - homepage.name=Ihatemoney
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=ihatemoney
+    - traefik.enable=true
+    - traefik.http.routers.ihatemoney.rule=Host(`ihatemoney.${DOMAINNAME}`)
+    - traefik.http.services.ihatemoney.loadbalancer.server.port=8000
+    volumes:
+    - ${APPDATA_DIR}/ihatemoney:/database

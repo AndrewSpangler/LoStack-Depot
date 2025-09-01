@@ -1,0 +1,54 @@
+services:
+  pastefy:
+    image: interaapps/pastefy:latest
+    hostname: pastefy
+    container_name: pastefy
+    restart: unless-stopped
+    networks:
+    - traefik_network
+    depends_on:
+    - pastefy-db
+    environment:
+      HTTP_SERVER_PORT: 80
+      HTTP_SERVER_CORS: '*'
+      DATABASE_DRIVER: mysql
+      DATABASE_NAME: pastefy
+      DATABASE_USER: pastefy
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_HOST: pastefy-db
+      DATABASE_PORT: 3306
+      SERVER_NAME: https://pastefy.${DOMAINNAME}:80
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.pastefy.rule=Host(`pastefy.${DOMAINNAME}`)
+    - traefik.http.services.pastefy.loadbalancer.server.port=80
+    - homepage.name=Pastefy
+    - homepage.group=Pastebins
+    - homepage.icon=mdi-clipboard-outline
+    - homepage.description=Advanced Paste System
+    - homepage.href=https://pastefy.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=pastefy
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+  pastefy-db:
+    image: mariadb:10.11
+    hostname: pastefy-db
+    container_name: pastefy-db
+    networks:
+    - traefik_network
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ADMIN_PASSWORD}
+      MYSQL_DATABASE: pastefy
+      MYSQL_USER: pastefy
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+    - ${APPDATA_DIR}/pastefy:/var/lib/mysql
+    labels:
+    - homepage.name=Pastefy MariaBD
+    - homepage.group=Databases
+    - homepage.icon=mariadb
+    - homepage.description=Pastefy DB
+    - homepage.href=https://pastefy-db.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=pastefy

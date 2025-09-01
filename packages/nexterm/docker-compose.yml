@@ -1,0 +1,23 @@
+services:
+  nexterm:
+    image: germannewsmaker/nexterm:1.0.2-OPEN-PREVIEW
+    restart: always
+    container_name: nexterm
+    hostname: nexterm
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=SSH/VNC/RDP Web Client
+    - homepage.group=Remote Access
+    - homepage.href=https://nexterm.${DOMAINNAME}/
+    - homepage.icon=nexterm
+    - homepage.name=Nexterm
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=nexterm
+    - traefik.enable=true
+    - traefik.http.routers.nexterm.rule=Host(`nexterm.${DOMAINNAME}`)
+    - traefik.http.services.nexterm.loadbalancer.server.port=6989
+    volumes:
+    - ${APPDATA_DIR}/nexterm:/app/data

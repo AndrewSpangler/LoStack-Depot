@@ -1,0 +1,23 @@
+services:
+  morphos:
+    image: ghcr.io/danvergara/morphos-server:latest
+    container_name: morphos
+    hostname: morphos
+    restart: unless-stopped
+    networks:
+    - traefik_network
+    volumes:
+    - ${CONFIG_DIR}/morphos:/tmp:rw
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.morphos.rule=Host(`morphos.${DOMAINNAME}`)
+    - traefik.http.services.morphos.loadbalancer.server.port=8080
+    - homepage.name=Morphos
+    - homepage.group=File Conversion
+    - homepage.icon=morphos
+    - homepage.description=File Conversion
+    - homepage.href=https://morphos.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=morphos
+    - sablier-station.duration=15m
+    - sablier-station.primary=true

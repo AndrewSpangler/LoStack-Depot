@@ -1,0 +1,23 @@
+services:
+  gossa:
+    image: pldubouilh/gossa
+    restart: unless-stopped
+    container_name: gossa
+    hostname: gossa
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Simple File Webserver
+    - homepage.group=File Managers
+    - homepage.href=https://gossa.${DOMAINNAME}/
+    - homepage.icon=mdi-file-cabinet
+    - homepage.name=Gossa
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=gossa
+    - traefik.enable=true
+    - traefik.http.routers.gossa.rule=Host(`gossa.${DOMAINNAME}`)
+    - traefik.http.services.gossa.loadbalancer.server.port=8001
+    volumes:
+    - ${APPDATA_DIR}/gossa:/shared

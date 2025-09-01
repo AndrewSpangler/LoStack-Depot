@@ -1,0 +1,21 @@
+services:
+  imgproxy:
+    image: darthsim/imgproxy
+    restart: always
+    container_name: imgproxy
+    hostname: imgproxy
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Imager Converter Proxy
+    - homepage.group=Proxy
+    - homepage.href=https://imgproxy.${DOMAINNAME}/
+    - homepage.icon=mdi-move-resize
+    - homepage.name=Imgproxy
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=imgproxy
+    - traefik.enable=true
+    - traefik.http.routers.imgproxy.rule=Host(`imgproxy.${DOMAINNAME}`)
+    - traefik.http.services.imgproxy.loadbalancer.server.port=8080

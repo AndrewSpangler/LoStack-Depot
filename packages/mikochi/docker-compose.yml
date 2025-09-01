@@ -1,0 +1,27 @@
+services:
+  mikochi:
+    image: zer0tonin/mikochi:latest
+    environment:
+    - DATA_DIR=/data
+    - USERNAME=admin
+    - PASSWORD=${ADMIN_PASSWORD}
+    restart: unless-stopped
+    container_name: mikochi
+    hostname: mikochi
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Remote File Browser
+    - homepage.group=File Managers
+    - homepage.href=https://mikochi.${DOMAINNAME}/
+    - homepage.icon=mdi-file-cabinet
+    - homepage.name=Mikochi
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=mikochi
+    - traefik.enable=true
+    - traefik.http.routers.mikochi.rule=Host(`mikochi.${DOMAINNAME}`)
+    - traefik.http.services.mikochi.loadbalancer.server.port=8080
+    volumes:
+    - ${APPDATA_DIR}/mikochi:/data

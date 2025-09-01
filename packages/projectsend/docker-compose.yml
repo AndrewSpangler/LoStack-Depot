@@ -1,0 +1,29 @@
+services:
+  projectsend:
+    image: lscr.io/linuxserver/projectsend:latest
+    container_name: projectsend
+    environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=${TZ}
+    - MAX_UPLOAD=5000
+    restart: unless-stopped
+    hostname: projectsend
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=File Share with Pipes
+    - homepage.group=File Transfer
+    - homepage.href=https://projectsend.${DOMAINNAME}/
+    - homepage.icon=projectsend
+    - homepage.name=Projectsend
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=projectsend
+    - traefik.enable=true
+    - traefik.http.routers.projectsend.rule=Host(`projectsend.${DOMAINNAME}`)
+    - traefik.http.services.projectsend.loadbalancer.server.port=80
+    volumes:
+    - ${APPDATA_DIR}/projectsend:/config
+    - ${MEDIA_DIR}:/data

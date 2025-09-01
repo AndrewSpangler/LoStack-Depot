@@ -1,0 +1,28 @@
+services:
+  pyload-ng:
+    image: lscr.io/linuxserver/pyload-ng:latest
+    container_name: pyload-ng
+    environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=${TZ}
+    restart: unless-stopped
+    hostname: pyload-ng
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=ownload Manager
+    - homepage.group=File Downloader
+    - homepage.href=https://pyload-ng.${DOMAINNAME}/
+    - homepage.icon=mdi-download-multiple
+    - homepage.name=Pyload-ng
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=pyload-ng
+    - traefik.enable=true
+    - traefik.http.routers.pyload-ng.rule=Host(`pyload-ng.${DOMAINNAME}`)
+    - traefik.http.services.pyload-ng.loadbalancer.server.port=8000
+    volumes:
+    - ${APPDATA_DIR}/pyload-ng/config:/config
+    - ${MEDIA_DIR}/downloads:/downloads

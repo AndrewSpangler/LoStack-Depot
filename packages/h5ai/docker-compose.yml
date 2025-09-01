@@ -1,0 +1,28 @@
+services:
+  h5ai:
+    image: awesometic/h5ai
+    container_name: h5ai
+    environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=${TZ}
+    restart: unless-stopped
+    hostname: h5ai
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=HTTP Web Server
+    - homepage.group=File Managers
+    - homepage.href=https://h5ai.${DOMAINNAME}/
+    - homepage.icon=mdi-file-cabinet
+    - homepage.name=H5ai
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=h5ai
+    - traefik.enable=true
+    - traefik.http.routers.h5ai.rule=Host(`h5ai.${DOMAINNAME}`)
+    - traefik.http.services.h5ai.loadbalancer.server.port=80
+    volumes:
+    - ${MEDIA_DIR}:/h5ai
+    - ${APPDATA_DIR}/h5ai:/config

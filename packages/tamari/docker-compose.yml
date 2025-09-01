@@ -1,0 +1,23 @@
+services:
+  tamari:
+    container_name: tamari
+    image: alexbates/tamari:0.8
+    restart: always
+    hostname: tamari
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Recipe Manager
+    - homepage.group=Recipe Managment
+    - homepage.href=https://tamari.${DOMAINNAME}/
+    - homepage.icon=tamari
+    - homepage.name=Tamari
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=tamari
+    - traefik.enable=true
+    - traefik.http.routers.tamari.rule=Host(`tamari.${DOMAINNAME}`)
+    - traefik.http.services.tamari.loadbalancer.server.port=4888
+    volumes:
+    - ${APPDATA_DIR}/tamari:/app/appdata

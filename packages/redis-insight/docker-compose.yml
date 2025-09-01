@@ -1,0 +1,23 @@
+services:
+  redis-insight:
+    image: redis/redisinsight:latest
+    hostname: redist-insight
+    container_name: redis-insight
+    restart: always
+    networks:
+    - traefik_network
+    volumes:
+    - ${APPDATA_DIR}/redis-insight:/data:rw
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.redis-insight.rule=Host(`redis-insight.${DOMAINNAME}`)
+    - traefik.http.services.redis-insight.loadbalancer.server.port=5540
+    - homepage.name=Redis Insight
+    - homepage.group=Admin
+    - homepage.icon=redis
+    - homepage.description=Redis DB Web UI
+    - homepage.href=https://redis-insight.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=redis-insight
+    - sablier-station.duration=15m
+    - sablier-station.primary=true

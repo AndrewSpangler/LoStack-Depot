@@ -1,0 +1,24 @@
+services:
+  dufs:
+    image: sigoden/dufs
+    command: /data -A
+    restart: unless-stopped
+    container_name: dufs
+    hostname: dufs
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=File Server Multitool
+    - homepage.group=File Managers
+    - homepage.href=https://dufs.${DOMAINNAME}/
+    - homepage.icon=mdi-file-cabinet
+    - homepage.name=Dufs
+    - sablier-station.duration=1m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=dufs
+    - traefik.enable=true
+    - traefik.http.routers.dufs.rule=Host(`dufs.${DOMAINNAME}`)
+    - traefik.http.services.dufs.loadbalancer.server.port=5000
+    volumes:
+    - ${APPDATA_DIR}/dufs:/data

@@ -1,0 +1,26 @@
+services:
+  wallos:
+    container_name: wallos
+    image: bellamy/wallos:latest
+    environment:
+      TZ: ${TZ}
+    restart: unless-stopped
+    hostname: wallos
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Personal Subscription Tracker
+    - homepage.group=Budget
+    - homepage.href=https://wallos.${DOMAINNAME}/
+    - homepage.icon=wallos
+    - homepage.name=Wallos
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=wallos
+    - traefik.enable=true
+    - traefik.http.routers.wallos.rule=Host(`wallos.${DOMAINNAME}`)
+    - traefik.http.services.wallos.loadbalancer.server.port=80
+    volumes:
+    - ${APPDATA_DIR}/wallos/db:/var/www/html/db
+    - ${APPDATA_DIR}/wallos/logos:/var/www/html/images/uploads/logos'

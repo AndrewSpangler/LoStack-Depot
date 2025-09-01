@@ -1,0 +1,29 @@
+services:
+  filesharing:
+    image: axeloz/filesharing:latest
+    environment:
+      UPLOAD_MAX_FILESIZE: 1G
+      UPLOAD_MAX_FILES: 100
+      UPLOAD_LIMIT_IPS: 127.0.0.1
+      UPLOAD_PREVENT_DUPLICATES: true
+      HASH_MAX_FILESIZE: 1G
+      LIMIT_DOWNLOAD_RATE: 1M
+    container_name: filesharing
+    hostname: filesharing
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=File Sharing App
+    - homepage.group=File Transfer
+    - homepage.href=https://filesharing.${DOMAINNAME}/
+    - homepage.icon=mdi-share-all
+    - homepage.name=Filesharing
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=filesharing
+    - traefik.enable=true
+    - traefik.http.routers.filesharing.rule=Host(`filesharing.${DOMAINNAME}`)
+    - traefik.http.services.filesharing.loadbalancer.server.port=80
+    volumes:
+    - ${APPDATA_DIR}/axeloz:/app/storage/content

@@ -1,0 +1,24 @@
+services:
+  tasks:
+    image: baldissaramatheus/tasks.md
+    container_name: tasks
+    hostname: tasks
+    restart: unless-stopped
+    networks:
+    - traefik_network
+    volumes:
+    - $APPDATA_DIR/tasksmd/tasks:/tasks
+    - $APPDATA_DIR/tasksmd/config:/config
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.tasks.rule=Host(`tasks.${DOMAINNAME}`)
+    - traefik.http.services.tasks.loadbalancer.server.port=8080
+    - homepage.name=Tasks
+    - homepage.group=Apps
+    - homepage.icon=mdi-format-list-checks
+    - homepage.description=Todo Lists Manager
+    - homepage.href=https://tasks.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=tasks
+    - sablier-station.duration=15m
+    - sablier-station.primary=true

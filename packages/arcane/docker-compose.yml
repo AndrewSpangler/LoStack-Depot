@@ -1,0 +1,29 @@
+services:
+  arcane:
+    image: ghcr.io/ofkm/arcane:latest
+    container_name: arcane
+    hostname: arcane
+    networks:
+      - traefik_network
+    environment:
+      - APP_ENV=production
+      - PUID=1000
+      - PGID=1000
+      - PUBLIC_SESSION_SECRET=${ARCANE_SESSION_SECRET}
+    restart: unless-stopped
+    volumes:
+      - ${APPDATA_DIR}/arcane:/app/data
+      - ${DOCKER_SOCKET}:/var/run/docker.sock
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.arcane.rule=Host(`arcane.${DOMAINNAME}`)"
+      - "traefik.http.services.arcane.loadbalancer.server.port=3000"
+      - "homepage.name=Arcane"
+      - "homepage.group=Admin"
+      - "homepage.icon=arcane"
+      - "homepage.description=Docker Manager"
+      - "homepage.href=https://arcane.${DOMAINNAME}/"
+      - "sablier.enable=true"
+      - "sablier.group=arcane"
+      - "sablier-station.duration=15m"
+      - "sablier-station.primary=true"

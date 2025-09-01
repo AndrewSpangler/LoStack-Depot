@@ -1,0 +1,28 @@
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    hostname: audiobookshelf
+    container_name: audiobookshelf
+    environment:
+      -PUID: 1024
+      -PGID: 101
+      -TZ: ${TZ}
+    networks:
+    - traefik_network
+    volumes:
+    - ${MEDIA_DIR}/audiobooks:/audiobooks
+    - ${APPDATA_DIR}/audiobookshelf/metadata:/metadata
+    - ${APPDATA_DIR}/audiobookshelf:/config
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.audiobookshelf.rule=Host(`audiobookshelf.${DOMAINNAME}`)
+    - traefik.http.services.audiobookshelf.loadbalancer.server.port=80
+    - homepage.name=Audiobookshelf
+    - homepage.group=Media
+    - homepage.icon=audiobookshelf
+    - homepage.description=Audiobook Player
+    - homepage.href=https://audiobookshelf.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=audiobookshelf
+    - sablier-station.duration=15m
+    - sablier-station.primary=true

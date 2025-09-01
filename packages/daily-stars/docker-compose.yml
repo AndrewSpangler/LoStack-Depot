@@ -1,0 +1,36 @@
+services:
+  daily-stars:
+    image: ghcr.io/emanuelef/daily-stars-explorer:latest
+    hostname: daily-stars
+    container_name: daily-stars
+    networks:
+    - traefik_network
+    environment:
+    - HOST=0.0.0.0
+    - PORT=8080
+    healthcheck:
+      test:
+      - CMD
+      - wget
+      - -q
+      - http://127.0.0.1:8080/health
+      - -O
+      - '-'
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    env_file:
+    - .env
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.daily-stars.rule=Host(`daily-stars.${DOMAINNAME}`)
+    - traefik.http.services.daily-stars.loadbalancer.server.port=8080
+    - homepage.name=Daily Stars Explorer
+    - homepage.group=Admin
+    - homepage.icon=mdi-star-shooting-outline
+    - homepage.description=Github Repo Stars Explorer
+    - homepage.href=https://daily-stars.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=daily-stars
+    - sablier-station.duration=15m
+    - sablier-station.primary=true

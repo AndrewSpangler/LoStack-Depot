@@ -1,0 +1,23 @@
+services:
+  opengist:
+    image: ghcr.io/thomiceli/opengist:1
+    hostname: opengist
+    container_name: opengist
+    restart: unless-stopped
+    networks:
+    - traefik_network
+    volumes:
+    - ${APPDATA_DIR}/opengist:/opengist
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.opengist.rule=Host(`opengist.${DOMAINNAME}`)
+    - traefik.http.services.opengist.loadbalancer.server.port=6157
+    - homepage.name=Opengist
+    - homepage.group=Pastebins
+    - homepage.icon=opengist
+    - homepage.description=Git Powered Pastebin
+    - homepage.href=https://opengist.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=opengist
+    - sablier-station.duration=15m
+    - sablier-station.primary=true

@@ -1,0 +1,57 @@
+services:
+  teammapper:
+    image: ghcr.io/b310-digital/teammapper:latest
+    container_name: teammapper
+    hostname: teammapper
+    networks:
+    - traefik_network
+    environment:
+      MODE: PROD
+      BINDING: 0.0.0.0
+      POSTGRES_DATABASE: teammapper-db
+      POSTGRES_HOST: teammapper-postgres
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_PORT: 5432
+      POSTGRES_SSL: false
+      POSTGRES_SSL_REJECT_UNAUTHORIZED: false
+      POSTGRES_USER: teammapper-user
+      POSTGRES_QUERY_TIMEOUT: 100000
+      POSTGRES_STATEMENT_TIMEOUT: 100000
+      DELETE_AFTER_DAYS: 999999
+    depends_on:
+    - teammapper-postgres
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.teammapper.rule=Host(`teammapper.${DOMAINNAME}`)
+    - traefik.http.services.teammapper.loadbalancer.server.port=3000
+    - homepage.name=TeamMapper
+    - homepage.group=Apps
+    - homepage.icon=mdi-brain
+    - homepage.description=Mindmap Diagram
+    - homepage.href=https://teammapper.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=teammapper
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+  teammapper-postgres:
+    image: postgres:12-alpine
+    container_name: teammapper-postgres
+    hostname: teammapper-postgres
+    networks:
+    - traefik_network
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: teammapper-db
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: teammapper-user
+    volumes:
+    - ${APPDATA_DIR}/teammapper/db:/var/lib/postgresql/data/pgdata
+    labels:
+    - homepage.name=TeamMapper Postgres DB
+    - homepage.group=Databases
+    - homepage.icon=postgres
+    - homepage.description=TeamMapper Backend DB
+    - homepage.href=https://teammapper.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=teammapper

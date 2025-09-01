@@ -1,0 +1,32 @@
+services:
+  bytestash:
+    image: ghcr.io/jordan-dalby/bytestash:latest
+    hostname: bytestash
+    container_name: bytestash
+    restart: always
+    networks:
+    - traefik_network
+    environment:
+      BASE_PATH: ${BYTESTASH_BASE_PATH}
+      JWT_SECRET: ${BYTESTASH_JWT_SECRET}
+      TOKEN_EXPIRY: 24h
+      ALLOW_NEW_ACCOUNTS: ${BYTESTASH_ALLOW_NEW_ACCOUNTS}
+      DEBUG: ${BYTESTASH_DEBUG}
+      DISABLE_ACCOUNTS: ${BYTESTASH_DISABLE_ACCOUNTS}
+      DISABLE_INTERNAL_ACCOUNTS: ${BYTESTASH_DISABLE_INTERNAL_ACCOUNTS}
+    volumes:
+    - ${APPDATA_DIR}/bytestash:/data/snippets
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.bytestash.entrypoints=https
+    - traefik.http.routers.bytestash.rule=Host(`bytestash.${DOMAINNAME}`)
+    - traefik.http.services.bytestash.loadbalancer.server.port=5000
+    - homepage.name=ByteStash
+    - homepage.group=Pastebins
+    - homepage.icon=bytestash
+    - homepage.description=Code Snippets
+    - homepage.href=https://bytestash.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=bytestash
+    - sablier-station.duration=30m
+    - sablier-station.primary=true

@@ -1,0 +1,33 @@
+services:
+  copyparty:
+    image: copyparty/ac:latest
+    container_name: copyparty
+    stop_grace_period: 15s
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - wget --spider -q 127.0.0.1:3923/?reset
+      interval: 1m
+      timeout: 2s
+      retries: 5
+      start_period: 15s
+    hostname: copyparty
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Portable File Server
+    - homepage.group=File Managers
+    - homepage.href=https://copyparty.${DOMAINNAME}/
+    - homepage.icon=copyparty
+    - homepage.name=Copyparty
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier-station.additional-config=true
+    - sablier.enable=true
+    - sablier.group=copyparty
+    - traefik.enable=true
+    - traefik.http.routers.copyparty.rule=Host(`copyparty.${DOMAINNAME}`)
+    - traefik.http.services.copyparty.loadbalancer.server.port=3923
+    volumes:
+    - ${APPDATA_DIR}/copyparty:/cfg:z
+    - ${MEDIA_DIR}/:/w:z

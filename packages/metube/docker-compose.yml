@@ -1,0 +1,23 @@
+services:
+  metube:
+    image: ghcr.io/alexta69/metube
+    container_name: metube
+    restart: unless-stopped
+    hostname: metube
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=YouTube Downloader
+    - homepage.group=Video Downloaders
+    - homepage.href=https://metube.${DOMAINNAME}/
+    - homepage.icon=metube
+    - homepage.name=Metube
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=metube
+    - traefik.enable=true
+    - traefik.http.routers.metube.rule=Host(`metube.${DOMAINNAME}`)
+    - traefik.http.services.metube.loadbalancer.server.port=8081
+    volumes:
+    - ${MEDIA_DIR}/downloads/youtube:/downloads

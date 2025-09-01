@@ -1,0 +1,23 @@
+services:
+  youtube-dl:
+    image: nbr23/youtube-dl-server:latest
+    restart: always
+    container_name: youtube-dl
+    hostname: youtube-dl
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=YouTube Downloader
+    - homepage.group=Video Downloaders
+    - homepage.href=https://youtube-dl.${DOMAINNAME}/
+    - homepage.icon=youtube-dl
+    - homepage.name=Youtube-dl
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=youtube-dl
+    - traefik.enable=true
+    - traefik.http.routers.youtube-dl.rule=Host(`youtube-dl.${DOMAINNAME}`)
+    - traefik.http.services.youtube-dl.loadbalancer.server.port=8080
+    volumes:
+    - ${APPDATA_DIR}/youtube-dl:/youtube-dl

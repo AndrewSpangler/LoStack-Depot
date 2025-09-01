@@ -1,0 +1,21 @@
+services:
+  sftpgo:
+    container_name: sftpgo
+    image: drakkan/sftpgo:edge
+    restart: unless-stopped
+    hostname: sftpgo
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Flexible SFTP Server
+    - homepage.group=FTP
+    - homepage.href=https://sftpgo.${DOMAINNAME}/
+    - homepage.icon=sftpgo
+    - homepage.name=Sftpgo
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=sftpgo
+    - traefik.enable=true
+    - traefik.http.routers.sftpgo.rule=Host(`sftpgo.${DOMAINNAME}`)
+    - traefik.http.services.sftpgo.loadbalancer.server.port=8080

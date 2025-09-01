@@ -1,0 +1,23 @@
+services:
+  ulogger:
+    container_name: ulogger
+    image: bfabiszewski/ulogger
+    environment:
+    - ULOGGER_LANG=pl
+    restart: unless-stopped
+    hostname: ulogger
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Geolocation Tracker
+    - homepage.group=Maps and GPS
+    - homepage.href=https://ulogger.${DOMAINNAME}/
+    - homepage.icon=mdi-earth
+    - homepage.name=Ulogger
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=ulogger
+    - traefik.enable=true
+    - traefik.http.routers.ulogger.rule=Host(`ulogger.${DOMAINNAME}`)
+    - traefik.http.services.ulogger.loadbalancer.server.port=80

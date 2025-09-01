@@ -1,0 +1,28 @@
+services:
+  metatube:
+    container_name: metatube
+    restart: always
+    image: jvt038/metatube:latest
+    environment:
+    - PORT=5000
+    - HOST=0.0.0.0
+    hostname: metatube
+    networks:
+    - traefik_network
+    labels:
+    - 'homepage.description=Image Hosting '
+    - homepage.group=Video Downloaders
+    - homepage.href=https://metatube.${DOMAINNAME}/
+    - homepage.icon=mdi-play
+    - homepage.name=Metatube
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=metatube
+    - traefik.enable=true
+    - traefik.http.routers.metatube.rule=Host(`metatube.${DOMAINNAME}`)
+    - traefik.http.services.metatube.loadbalancer.server.port=5000
+    volumes:
+    - ${MEDIA_DIR}/downloads/youtube:/downloads:rw
+    - ${APPDATA_DIR}/metatube/database:/database:rw
+    - ${APPDATA_DIR}/metatube/migrations:/config/migrations:rw'

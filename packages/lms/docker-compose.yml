@@ -1,0 +1,25 @@
+services:
+  lms:
+    image: epoupon/lms
+    restart: unless-stopped
+    user: 1000:1000
+    container_name: lms
+    hostname: lms
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Web Music Player
+    - homepage.group=Media
+    - homepage.href=https://lms.${DOMAINNAME}/
+    - homepage.icon=mdi-music
+    - homepage.name=Lms
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=lms
+    - traefik.enable=true
+    - traefik.http.routers.lms.rule=Host(`lms.${DOMAINNAME}`)
+    - traefik.http.services.lms.loadbalancer.server.port=5082
+    volumes:
+    - ${MEDIA_DIR}/music:/music:ro
+    - ${APPDATA_DIR}/lms:/var/lms:rw

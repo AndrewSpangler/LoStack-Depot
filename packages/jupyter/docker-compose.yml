@@ -1,0 +1,31 @@
+services:
+  jupyter:
+    image: jupyter/base-notebook:latest
+    container_name: jupyter
+    hostname: jupyter
+    restart: unless-stopped
+    networks:
+    - traefik_network
+    command: start-notebook.sh
+    user: root
+    environment:
+      NB_USER: ADMIN
+      NB_UID: 1001
+      NB_GID: 100
+      CHOWN_HOME: 'yes'
+    volumes:
+    - ${APPDATA_DIR}/jupyter:/home/docker_worker/work
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.jupyter.entrypoints=https
+    - traefik.http.routers.jupyter.rule=Host(`jupyter.${DOMAINNAME}`)
+    - traefik.http.services.jupyter.loadbalancer.server.port=8888
+    - homepage.name=Jupyter
+    - homepage.group=Development
+    - homepage.icon=jupyter
+    - homepage.description=Python Data Science
+    - homepage.href=https://jupyter.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=jupyter
+    - sablier-station.duration=15m
+    - sablier-station.primary=true

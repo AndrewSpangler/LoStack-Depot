@@ -1,0 +1,23 @@
+services:
+  olivetin:
+    image: jamesread/olivetin
+    container_name: olivetin
+    hostname: olivetin
+    restart: unless-stopped
+    networks:
+    - traefik_network
+    volumes:
+    - ${CONFIG_DIR}/olivetin:/config
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.olivetin.rule=Host(`olivetin.${DOMAINNAME}`)
+    - traefik.http.services.olivetin.loadbalancer.server.port=1337
+    - homepage.name=OliveTin
+    - homepage.group=Admin
+    - homepage.icon=olivetin
+    - homepage.description=Simple Command Buttons
+    - homepage.href=https://olivetin.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=olivetin
+    - sablier-station.duration=15m
+    - sablier-station.primary=true

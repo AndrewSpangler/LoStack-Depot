@@ -1,0 +1,27 @@
+services:
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr
+    environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=${TZ}
+    restart: unless-stopped
+    hostname: overseerr
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Plex Discovery Tool
+    - homepage.group=Media
+    - homepage.href=https://overseerr.${DOMAINNAME}/
+    - homepage.icon=overseerr
+    - homepage.name=Overseerr
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=overseerr
+    - traefik.enable=true
+    - traefik.http.routers.overseerr.rule=Host(`overseerr.${DOMAINNAME}`)
+    - traefik.http.services.overseerr.loadbalancer.server.port=5055
+    volumes:
+    - ${APPDATA_DIR}/overseerr:/config

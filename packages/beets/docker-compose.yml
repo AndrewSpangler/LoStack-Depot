@@ -1,0 +1,29 @@
+services:
+  beets:
+    image: lscr.io/linuxserver/beets:latest
+    container_name: beets
+    environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=Etc/UTC
+    restart: unless-stopped
+    hostname: beets
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Music Library Manager
+    - homepage.group=Media
+    - homepage.href=https://beets.${DOMAINNAME}/
+    - homepage.icon=beets
+    - homepage.name=Beets
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=beets
+    - traefik.enable=true
+    - traefik.http.routers.beets.rule=Host(`beets.${DOMAINNAME}`)
+    - traefik.http.services.beets.loadbalancer.server.port=8337
+    volumes:
+    - /path/to/beets/config:/config
+    - /path/to/music/library:/music
+    - /path/to/ingest:/downloads

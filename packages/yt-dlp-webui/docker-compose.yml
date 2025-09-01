@@ -1,0 +1,25 @@
+services:
+  yt-dlp-webui:
+    image: marcobaobao/yt-dlp-webui
+    healthcheck:
+      test: curl -f http://localhost:3033 || exit 1
+    restart: unless-stopped
+    container_name: yt-dlp-webui
+    hostname: yt-dlp-webui
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=YouTube Downloader
+    - homepage.group=Video Downloaders
+    - homepage.href=https://yt-dlp-webui.${DOMAINNAME}/
+    - homepage.icon=mdi-youtube
+    - homepage.name=Yt-dlp-webui
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=yt-dlp-webui
+    - traefik.enable=true
+    - traefik.http.routers.yt-dlp-webui.rule=Host(`yt-dlp-webui.${DOMAINNAME}`)
+    - traefik.http.services.yt-dlp-webui.loadbalancer.server.port=3033
+    volumes:
+    - ${APPDATA_DIR}/downloads/youtube:/downloads

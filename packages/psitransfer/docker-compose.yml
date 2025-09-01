@@ -1,0 +1,26 @@
+services:
+  psitransfer:
+    image: psitrax/psitransfer
+    environment:
+    - PSITRANSFER_DEFAULT_RETENTION=3600
+    - PSITRANSFER_PORT=8080
+    restart: unless-stopped
+    container_name: psitransfer
+    hostname: psitransfer
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=File Sharing Solution
+    - homepage.group=File Transfer
+    - homepage.href=https://psitransfer.${DOMAINNAME}/
+    - homepage.icon=psitransfer
+    - homepage.name=Psitransfer
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=psitransfer
+    - traefik.enable=true
+    - traefik.http.routers.psitransfer.rule=Host(`psitransfer.${DOMAINNAME}`)
+    - traefik.http.services.psitransfer.loadbalancer.server.port=8080
+    volumes:
+    - ${APPDATA_DIR}/psitransfer:/data

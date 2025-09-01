@@ -1,0 +1,32 @@
+services:
+  tubetube:
+    image: ghcr.io/mattblackonly/tubetube:latest
+    container_name: tubetube
+    environment:
+    - THREAD_COUNT=1
+    - PUID=1000
+    - PGID=1000
+    restart: unless-stopped
+    hostname: tubetube
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=YouTube Downloader
+    - homepage.group=Video Downloaders
+    - homepage.href=https://tubetube.${DOMAINNAME}/
+    - homepage.icon=mdi-youtube
+    - homepage.name=Tubetube
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=tubetube
+    - traefik.enable=true
+    - traefik.http.routers.tubetube.rule=Host(`tubetube.${DOMAINNAME}`)
+    - traefik.http.services.tubetube.loadbalancer.server.port=6543
+    volumes:
+    - ${MEDIA_DIR}/downloads/youtube/general:/data/General
+    - ${MEDIA_DIR}/downloads/youtube/music:/data/Music
+    - ${MEDIA_DIR}/downloads/youtube/podcasts:/data/Podcast
+    - ${MEDIA_DIR}/downloads/youtube/videos:/data/Video
+    - ${MEDIA_DIR}/downloads/youtube/temp:/data/Video
+    - ${APPDATA_DIR}/tubetube:/config

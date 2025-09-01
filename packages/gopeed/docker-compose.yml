@@ -1,0 +1,24 @@
+services:
+  gopeed:
+    container_name: gopeed
+    image: liwei2633/gopeed
+    restart: unless-stopped
+    hostname: gopeed
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Modern Download Manager
+    - homepage.group=File Downloader
+    - homepage.href=https://gopeed.${DOMAINNAME}/
+    - homepage.icon=mdi-download-multiple
+    - homepage.name=Gopeed
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=gopeed
+    - traefik.enable=true
+    - traefik.http.routers.gopeed.rule=Host(`gopeed.${DOMAINNAME}`)
+    - traefik.http.services.gopeed.loadbalancer.server.port=9999
+    volumes:
+    - ${APPDATA_DIR}/gopeed/downloads:/root/Downloads
+    - ${APPDATA_DIR}/gopeed/storage:/app/storage

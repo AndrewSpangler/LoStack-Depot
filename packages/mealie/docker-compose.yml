@@ -1,0 +1,35 @@
+services:
+  mealie:
+    image: ghcr.io/mealie-recipes/mealie:v1.12.0
+    container_name: mealie
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+    environment:
+      ALLOW_SIGNUP: false
+      PUID: 1000
+      PGID: 1000
+      TZ: ${TZ}
+      MAX_WORKERS: 1
+      WEB_CONCURRENCY: 1
+      BASE_URL: https://mealie.${DOMAINNAME}
+    hostname: mealie
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Recipe Manager
+    - homepage.group=Recipe Managment
+    - homepage.href=https://mealie.${DOMAINNAME}/
+    - homepage.icon=mealie
+    - homepage.name=Mealie
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=mealie
+    - traefik.enable=true
+    - traefik.http.routers.mealie.rule=Host(`mealie.${DOMAINNAME}`)
+    - traefik.http.services.mealie.loadbalancer.server.port=9000
+    volumes:
+    - ${APPDATA_DIR}/mealie:/app/data/

@@ -1,0 +1,30 @@
+services:
+  kener:
+    image: rajnandan1/kener:latest
+    container_name: kener
+    environment:
+    - TZ=${TZ}
+    - ORIGIN=https://kener.${DOMAINNAME}
+    hostname: kener
+    networks:
+    - traefik_network
+    entrypoint: "sh -c '\n  if [ ! -f /config/secret.key ]; then\n    echo \"Generating\
+      \ new secret key...\"\n    mkdir -p /config\n    SECRET_KEY=$(openssl rand -hex\
+      \ 32)\n    echo \"KENER_SECRET_KEY=$$SECRET_KEY\" > /config/secret.key\n  else\n\
+      \    echo \"Using existing secret key from /config/secret.key\"\n  fi\n  . /config/secret.key\n\
+      \  export KENER_SECRET_KEY\n  exec node main\n'"
+    labels:
+    - homepage.description=Service Health Dashboard
+    - homepage.group=Network Monitoring
+    - homepage.href=https://kener.${DOMAINNAME}/
+    - homepage.icon=mdi-view-dashboard-variant-outline
+    - homepage.name=Kener
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=kener
+    - traefik.enable=true
+    - traefik.http.routers.kener.rule=Host(`kener.${DOMAINNAME}`)
+    - traefik.http.services.kener.loadbalancer.server.port=3000
+    volumes:
+    - ${APPDATA_DIR}/kener:/config:rw

@@ -1,0 +1,21 @@
+services:
+  piping-server-pkg:
+    image: nwtgck/piping-server
+    restart: unless-stopped
+    container_name: piping-server-pkg
+    hostname: piping-server-pkg
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=File Share with Pipes
+    - homepage.group=File Transfer
+    - homepage.href=https://piping-server-pkg.${DOMAINNAME}/
+    - homepage.icon=mdi-pipe
+    - homepage.name=Piping-server-pkg
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=piping-server-pkg
+    - traefik.enable=true
+    - traefik.http.routers.piping-server-pkg.rule=Host(`piping-server-pkg.${DOMAINNAME}`)
+    - traefik.http.services.piping-server-pkg.loadbalancer.server.port=8080

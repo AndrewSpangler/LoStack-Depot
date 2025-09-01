@@ -1,0 +1,23 @@
+services:
+  lenpaste:
+    image: ghcr.io/lcomrade/lenpaste:1.3.1
+    hostname: lenpaste
+    container_name: lenpaste
+    restart: unless-stopped
+    networks:
+    - traefik_network
+    volumes:
+    - ${APPDATA_DIR}/lenpaste:/data
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.linkding.rule=Host(`lenpaste.${DOMAINNAME}`)
+    - traefik.http.services.lenpaste.loadbalancer.server.port=80
+    - homepage.name=Lenpaste
+    - homepage.group=Pastebins
+    - homepage.icon=mdi-clipboard-outline
+    - homepage.description=Pastebin Alternative with API
+    - homepage.href=https://lenpaste.${DOMAINNAME}/
+    - sablier.enable=true
+    - sablier.group=lenpaste
+    - sablier-station.duration=15m
+    - sablier-station.primary=true

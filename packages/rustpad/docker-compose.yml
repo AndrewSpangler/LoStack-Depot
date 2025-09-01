@@ -1,0 +1,21 @@
+services:
+  rustpad:
+    container_name: rustpad
+    hostname: rustpad
+    image: ekzhang/rustpad
+    restart: unless-stopped
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Collaborative Text Editor
+    - homepage.group=Pastebins
+    - homepage.href=https://rustpad.${DOMAINNAME}/
+    - homepage.icon=mdi-note-edit-outline
+    - homepage.name=Rustpad
+    - sablier-station.duration=15m
+    - sablier.enable=true
+    - sablier.group=rustpad
+    - sablier-station.primary=true
+    - traefik.enable=true
+    - traefik.http.routers.rustpad.rule=Host(`rustpad.${DOMAINNAME}`)
+    - traefik.http.services.rustpad.loadbalancer.server.port=3030

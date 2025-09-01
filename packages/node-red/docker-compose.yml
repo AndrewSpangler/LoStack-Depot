@@ -1,0 +1,25 @@
+services:
+  node-red:
+    image: nodered/node-red:latest
+    environment:
+    - TZ=${TZ}
+    restart: always
+    container_name: node-red
+    hostname: node-red
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=IoT Flow editor
+    - homepage.group=IoT
+    - homepage.href=https://node-red.${DOMAINNAME}/
+    - homepage.icon=node-red
+    - homepage.name=Node-red
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=node-red
+    - traefik.enable=true
+    - traefik.http.routers.node-red.rule=Host(`node-red.${DOMAINNAME}`)
+    - traefik.http.services.node-red.loadbalancer.server.port=1880
+    volumes:
+    - ${APPDATA_DIR}/node-red:/data

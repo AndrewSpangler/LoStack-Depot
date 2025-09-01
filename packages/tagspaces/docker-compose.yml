@@ -1,0 +1,21 @@
+services:
+  tagspaces:
+    image: tagspaces/tagspaces-lite-web:5.4.4
+    restart: unless-stopped
+    container_name: tagspaces
+    hostname: tagspaces
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=File Organizer
+    - homepage.group=File Managers
+    - homepage.href=https://tagspaces.${DOMAINNAME}/
+    - homepage.icon=mdi-tag-outline
+    - homepage.name=Tagspaces
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=tagspaces
+    - traefik.enable=true
+    - traefik.http.routers.tagspaces.rule=Host(`tagspaces.${DOMAINNAME}`)
+    - traefik.http.services.tagspaces.loadbalancer.server.port=80

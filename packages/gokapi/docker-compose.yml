@@ -1,0 +1,26 @@
+services:
+  gokapi:
+    image: f0rc3/gokapi:latest
+    environment:
+    - TZ=${TZ}
+    restart: unless-stopped
+    container_name: gokapi
+    hostname: gokapi
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Expiring File Sharing
+    - homepage.group=File Transfer
+    - homepage.href=https://gokapi.${DOMAINNAME}/
+    - homepage.icon=gokapi
+    - homepage.name=Gokapi
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=gokapi
+    - traefik.enable=true
+    - traefik.http.routers.gokapi.rule=Host(`gokapi.${DOMAINNAME}`)
+    - traefik.http.services.gokapi.loadbalancer.server.port=53842
+    volumes:
+    - ${APPDATA_DIR}/gokapi/config:/app/config
+    - ${APPDATA_DIR}/gokapi/data:/app/data

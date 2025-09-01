@@ -1,0 +1,46 @@
+services:
+  ackee:
+    image: electerious/ackee
+    container_name: ackee
+    hostname: ackee
+    networks:
+     - traefik_network
+    environment:
+      - WAIT_HOSTS=ackee-mongo:27017
+      - ACKEE_MONGODB=mongodb://ackee-mongo:27017/ackee
+      - ACKEE_USERNAME=${ACKEE_USERNAME}
+      - ACKEE_PASSWORD=${ACKEE_PASSWORD}
+      - ACKEE_TTL=${ACKEE_TTL}
+      - ACKEE_ALLOW_ORIGIN=https://ackee.${DOMAINNAME}
+    depends_on:
+      - ackee-mongo
+    restart: always  
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ackee.rule=Host(`ackee.${DOMAINNAME}`)"
+      - "traefik.http.services.ackee.loadbalancer.server.port=3000"
+      - "homepage.name=Ackee"
+      - "homepage.group=Apps"
+      - "homepage.icon=mdi-google-analytics"
+      - "homepage.description=Analytics Tool"
+      - "homepage.href=https://ackee.${DOMAINNAME}/"
+      - "sablier.enable=true"
+      - "sablier.group=ackee"
+      - "sablier-station.duration=15m"
+      - "sablier-station.primary=true"
+
+  ackee-mongo:
+    image: mongo
+    container_name: ackee-mongo
+    hostname: ackee-mongo
+    networks:
+     - traefik_network
+    volumes:
+      - ${APPDATA_DIR}/ackee/db:/data/db
+    labels:
+      - "homepage.name=Ackee MongoDB"
+      - "homepage.group=Databases"
+      - "homepage.icon=mongodb"
+      - "homepage.description=Ackee Database"
+      - "sablier.enable=true"
+      - "sablier.group=ackee"

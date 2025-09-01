@@ -1,0 +1,26 @@
+services:
+  quickshare:
+    container_name: quickshare
+    image: hexxa/quickshare
+    environment:
+    - DEFAULTADMINPWD=${ADMIN_PASSWORD}
+    - DEFAULTADMIN=admin
+    restart: unless-stopped
+    hostname: quickshare
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Quick Simple File Sharing
+    - homepage.group=File Transfer
+    - homepage.href=https://quickshare.${DOMAINNAME}/
+    - homepage.icon=quickshare
+    - homepage.name=Quickshare
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=quickshare
+    - traefik.enable=true
+    - traefik.http.routers.quickshare.rule=Host(`quickshare.${DOMAINNAME}`)
+    - traefik.http.services.quickshare.loadbalancer.server.port=8686
+    volumes:
+    - ${APPDATA_DIR}/quickshare:/quickshare/root

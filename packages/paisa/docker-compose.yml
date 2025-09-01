@@ -1,0 +1,23 @@
+services:
+  paisa:
+    image: ananthakumaran/paisa:latest
+    restart: unless-stopped
+    container_name: paisa
+    hostname: paisa
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Personal Finance Manager
+    - homepage.group=Budget
+    - homepage.href=https://paisa.${DOMAINNAME}/
+    - homepage.icon=paisa
+    - homepage.name=Paisa
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=paisa
+    - traefik.enable=true
+    - traefik.http.routers.paisa.rule=Host(`paisa.${DOMAINNAME}`)
+    - traefik.http.services.paisa.loadbalancer.server.port=7500
+    volumes:
+    - ${MEDIA_DIR}/documents:/root/Documents/paisa/

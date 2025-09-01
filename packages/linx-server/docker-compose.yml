@@ -1,0 +1,31 @@
+services:
+  linx-server:
+    container_name: linx-server
+    image: andreimarcu/linx-server
+    command: "sh -c ' if [ ! -f /data/linx-server.conf ]; then\n  cat > /data/linx-server.conf\
+      \ << EOF\nbind = 127.0.0.1:8080 sitename = ${DOMAINNAME} Linx Server siteurl\
+      \ = https://linx-server.${DOMAINNAME}/ selifpath = s maxsize = 4294967296 maxexpiry\
+      \ = 86400 allowhotlink = true remoteuploads = true nologs = true force-random-filename\
+      \ = false cleanup-every-minutes = 5 EOF fi && linx-server -config /data/linx-server.conf\
+      \ '\n"
+    restart: unless-stopped
+    hostname: linx-server
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=File/Code/Media Sharing
+    - homepage.group=Media
+    - homepage.href=https://linx-server.${DOMAINNAME}/
+    - homepage.icon=mdi-cat
+    - homepage.name=Linx-server
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=linx-server
+    - traefik.enable=true
+    - traefik.http.routers.linx-server.rule=Host(`linx-server.${DOMAINNAME}`)
+    - traefik.http.services.linx-server.loadbalancer.server.port=8080
+    volumes:
+    - ${MEDIA_DIR}/images:/data/files/images
+    - ${APPDATA_DIR}/linx-server/meta:/data/meta
+    - ${APPDATA_DIR}/linx-server/conf/linx-server.conf:/data/linx-server.conf

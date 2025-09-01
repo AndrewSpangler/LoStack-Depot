@@ -1,0 +1,21 @@
+services:
+  focalboard:
+    image: mattermost/focalboard
+    restart: always
+    container_name: focalboard
+    hostname: focalboard
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Project Tracker
+    - homepage.group=Project Management
+    - homepage.href=https://focalboard.${DOMAINNAME}/
+    - homepage.icon=focalboard
+    - homepage.name=Focalboard
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=focalboard
+    - traefik.enable=true
+    - traefik.http.routers.focalboard.rule=Host(`focalboard.${DOMAINNAME}`)
+    - traefik.http.services.focalboard.loadbalancer.server.port=8000

@@ -1,0 +1,27 @@
+services:
+  homebox:
+    image: ghcr.io/hay-kot/homebox:latest
+    container_name: homebox
+    restart: always
+    environment:
+    - HBOX_LOG_LEVEL=info
+    - HBOX_LOG_FORMAT=text
+    - HBOX_WEB_MAX_UPLOAD_SIZE=10
+    hostname: homebox
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Organization System
+    - homepage.group=Inventory Management
+    - homepage.href=https://homebox.${DOMAINNAME}/
+    - homepage.icon=homebox
+    - homepage.name=Homebox
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=homebox
+    - traefik.enable=true
+    - traefik.http.routers.homebox.rule=Host(`homebox.${DOMAINNAME}`)
+    - traefik.http.services.homebox.loadbalancer.server.port=7745
+    volumes:
+    - ${APPDATA_DIR}/homebox:/data/

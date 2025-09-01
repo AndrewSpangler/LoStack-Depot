@@ -1,0 +1,21 @@
+services:
+  web-check:
+    container_name: web-check
+    image: lissy93/web-check
+    restart: unless-stopped
+    hostname: web-check
+    networks:
+    - traefik_network
+    labels:
+    - homepage.description=Web Security Tool
+    - homepage.group=IP & Domain
+    - homepage.href=https://web-check.${DOMAINNAME}/
+    - homepage.icon=web-check
+    - homepage.name=Web-check
+    - sablier-station.duration=15m
+    - sablier-station.primary=true
+    - sablier.enable=true
+    - sablier.group=web-check
+    - traefik.enable=true
+    - traefik.http.routers.web-check.rule=Host(`web-check.${DOMAINNAME}`)
+    - traefik.http.services.web-check.loadbalancer.server.port=3000
