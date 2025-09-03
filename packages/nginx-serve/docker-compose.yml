@@ -36,6 +36,6 @@ services:
       - traefik.http.services.nginx-serve.loadbalancer.server.port=PORT
       - lostack.duration=15m
       - lostack.primary=true
-      - lostack.details=Nginx configured as a simple file server. By default serves LoStack's media/www dir
+      - "lostack.details=Nginx configured as a simple file server. By default serves LoStack's media/www dir"
       - lostack.tags=fileserver,lostack
       - lostack.login=userless
