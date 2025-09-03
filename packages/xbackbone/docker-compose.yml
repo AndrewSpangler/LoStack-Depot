@@ -16,8 +16,8 @@ services:
     - homepage.href=https://xbackbone.${DOMAINNAME}/
     - homepage.icon=xbackbone
     - homepage.name=Xbackbone
-    - sablier-station.duration=15m
-    - sablier-station.primary=true
+    - lostack.duration=15m
+    - lostack.primary=true
     - sablier.enable=true
     - sablier.group=xbackbone
     - traefik.enable=true

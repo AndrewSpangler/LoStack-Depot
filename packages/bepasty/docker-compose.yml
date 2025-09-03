@@ -20,5 +20,5 @@ services:
     - homepage.href=https://bepasty.${DOMAINNAME}/
     - sablier.enable=true
     - sablier.group=bepasty
-    - sablier-station.duration=30m
-    - sablier-station.primary=true
+    - lostack.duration=30m
+    - lostack.primary=true

@@ -12,8 +12,8 @@ services:
     - homepage.href=https://holoplay.${DOMAINNAME}/
     - homepage.icon=mdi-music
     - homepage.name=Holoplay
-    - sablier-station.duration=15m
-    - sablier-station.primary=true
+    - lostack.duration=15m
+    - lostack.primary=true
     - sablier.enable=true
     - sablier.group=holoplay
     - traefik.enable=true

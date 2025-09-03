@@ -31,5 +31,5 @@ services:
     - homepage.href=https://code-server.${DOMAINNAME}/
     - sablier.enable=true
     - sablier.group=code-server
-    - sablier-station.duration=2h
-    - sablier-station.primary=true
+    - lostack.duration=2h
+    - lostack.primary=true

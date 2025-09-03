@@ -47,9 +47,6 @@ services:
     - traefik_network
     depends_on:
     - gitea-db
-    - openldap
-    - gitea-db
-    - openldap
     volumes:
     - ${APPDATA_DIR}/gitea:/data
     labels:
@@ -64,8 +61,8 @@ services:
     - homepage.href=https://gitea.${DOMAINNAME}/
     - sablier.enable=true
     - sablier.group=gitea
-    - sablier-station.duration=15m
-    - sablier-station.primary=true
+    - lostack.duration=15m
+    - lostack.primary=true
   gitea-db:
     image: mariadb:10.11
     container_name: gitea-db

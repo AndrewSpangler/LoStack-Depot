@@ -16,8 +16,8 @@ services:
     - homepage.href=https://wantguns.${DOMAINNAME}/
     - homepage.icon=mdi-clipboard-outline
     - homepage.name=Wantguns
-    - sablier-station.duration=15m
-    - sablier-station.primary=true
+    - lostack.duration=15m
+    - lostack.primary=true
     - sablier.enable=true
     - sablier.group=wantguns
     - traefik.enable=true

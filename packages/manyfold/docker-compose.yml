@@ -45,8 +45,8 @@ services:
     - homepage.href=https://manyfold.${DOMAINNAME}/
     - sablier.enable=true
     - sablier.group=manyfold
-    - sablier-station.duration=45m
-    - sablier-station.primary=true
+    - lostack.duration=45m
+    - lostack.primary=true
   manyfold-postgres:
     image: postgres:15
     hostname: manyfold-postgres

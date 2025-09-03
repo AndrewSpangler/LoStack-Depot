@@ -52,8 +52,8 @@ services:
     - homepage.href=https://freshrss.${DOMAINNAME}/
     - sablier.enable=true
     - sablier.group=freshrss
-    - sablier-station.duration=15m
-    - sablier-station.primary=true
+    - lostack.duration=15m
+    - lostack.primary=true
   freshrss-db:
     image: postgres:15-alpine
     container_name: freshrss-db

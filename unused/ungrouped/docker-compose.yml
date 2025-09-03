@@ -159,22 +159,22 @@ services:
     environment:
     - PYTHONUNBUFFERED=1
     - TZ=${TZ}
-  sablier-station:
-    container_name: sablier-station
-    hostname: sablier-station
+  lostack:
+    container_name: lostack
+    hostname: lostack
     networks:
       traefik_network: {}
     stop_signal: SIGINT
     depends_on:
-    - sablier-station-db
+    - lostack-db
     environment:
     - PYTHONUNBUFFERED=1
     - TZ=${TZ}
-    - DB_HOST=sablier-station-db
+    - DB_HOST=lostack-db
     - DB_PORT=3306
     - DB_USER=sablier
     - DB_PASSWORD=${DATABASE_PASSWORD}
-    - DB_NAME=sablier-station-db
+    - DB_NAME=lostack-db
     - DOMAINNAME=${DOMAINNAME}
     - DOMAIN_NAME=${DOMAINNAME}
     - SABLIER_URL=http://sablier:10000
@@ -182,7 +182,7 @@ services:
     - SABLIER_DEFAULT_THEME=${SABLIER_DEFAULT_THEME}
     - TRUSTED_PROXY_IPS=${SABLIER_TRUSTED_PROXY_IPS}
     build:
-      context: sablier-station
+      context: lostack
       target: builder
     volumes:
     - ${DOCKER_SOCKET}:/var/run/docker.sock
@@ -190,30 +190,30 @@ services:
     - ./:/docker
     labels:
     - traefik.enable=true
-    - traefik.http.routers.sablier-station.rule=Host(`sablier-station.${DOMAINNAME}`)
-    - traefik.http.services.sablier-station.loadbalancer.server.port=80
+    - traefik.http.routers.lostack.rule=Host(`lostack.${DOMAINNAME}`)
+    - traefik.http.services.lostack.loadbalancer.server.port=80
     - traefik.docker.network=traefik_network
-    - homepage.name=Sablier Station
+    - homepage.name=LoStack
     - homepage.group=Admin
     - homepage.icon=mdi-rocket-launch
     - homepage.description=Container Auto-Start
-    - homepage.href=https://sablier-station.${DOMAINNAME}/
-  sablier-station-db:
+    - homepage.href=https://lostack.${DOMAINNAME}/
+  lostack-db:
     image: mariadb:10.11
-    container_name: sablier-station-db
-    hostname: sablier-station-sb
+    container_name: lostack-db
+    hostname: lostack-sb
     networks:
       traefik_network: {}
     environment:
     - MYSQL_ROOT_PASSWORD=${SABLIER_STATION_DB_ROOT_PASSWORD}
-    - MYSQL_DATABASE=sablier-station-db
+    - MYSQL_DATABASE=lostack-db
     - MYSQL_USER=sablier
     - MYSQL_PASSWORD=${DATABASE_PASSWORD}
     - TZ=${TZ}
     volumes:
-    - ${APPDATA_DIR}/sablier-station-db/:/var/lib/mysql
+    - ${APPDATA_DIR}/lostack-db/:/var/lib/mysql
     labels:
-    - homepage.name=Sablier GUI MariaDB
+    - homepage.name=LoStack MariaDB
     - homepage.group=Databases
     - homepage.icon=mariadb
     - homepage.description=Container Auto-Start

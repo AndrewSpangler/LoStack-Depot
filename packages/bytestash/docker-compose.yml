@@ -28,5 +28,5 @@ services:
     - homepage.href=https://bytestash.${DOMAINNAME}/
     - sablier.enable=true
     - sablier.group=bytestash
-    - sablier-station.duration=30m
-    - sablier-station.primary=true
+    - lostack.duration=30m
+    - lostack.primary=true

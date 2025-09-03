@@ -1,0 +1,41 @@
+services:
+  nginx-serve:
+    image: nginx:latest
+    container_name: nginx-serve
+    hostname: nginx-serve
+    restart: unless-stopped
+    environment:
+      AUTO_INDEX: on
+      TZ: ${TZ}
+    entrypoint: |
+      /bin/sh -c "
+      echo 'events {}' > /etc/nginx/nginx.conf && \
+      echo 'http {
+        server {
+          listen 80;
+          location / {
+            root /usr/share/nginx/html;
+            autoindex on;
+          }
+        }
+      }' >> /etc/nginx/nginx.conf && \ nginx -g 'daemon off;' "
+    volumes:
+      - ${MEDIA_DIR}/www:/usr/share/nginx/html/
+    networks:
+      - traefik_network
+    labels:
+      - homepage.description=Nginx Fileserver
+      - homepage.group=File Transfer
+      - homepage.href=https://nginx-serve.${DOMAINNAME}/
+      - homepage.icon=nginx
+      - homepage.name=Nginx Serve
+      - sablier.enable=true
+      - sablier.group=nginx-serve
+      - traefik.enable=true
+      - traefik.http.routers.nginx-serve.rule=Host(`nginx-serve.${DOMAINNAME}`)
+      - traefik.http.services.nginx-serve.loadbalancer.server.port=PORT
+      - lostack.duration=15m
+      - lostack.primary=true
+      - lostack.details=Nginx configured as a simple file server. By default serves LoStack's media/www dir
+      - lostack.tags=fileserver,lostack
+      - lostack.login=userless

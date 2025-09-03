@@ -14,8 +14,8 @@ services:
     - homepage.href=https://node-red.${DOMAINNAME}/
     - homepage.icon=node-red
     - homepage.name=Node-red
-    - sablier-station.duration=15m
-    - sablier-station.primary=true
+    - lostack.duration=15m
+    - lostack.primary=true
     - sablier.enable=true
     - sablier.group=node-red
     - traefik.enable=true

@@ -16,5 +16,5 @@ services:
     - homepage.href=https://hrconvert.${DOMAINNAME}/HRProprietary/HRConvert2/convertCore.php
     - sablier.enable=true
     - sablier.group=hrconvert
-    - sablier-station.duration=1m
-    - sablier-station.primary=true
+    - lostack.duration=1m
+    - lostack.primary=true

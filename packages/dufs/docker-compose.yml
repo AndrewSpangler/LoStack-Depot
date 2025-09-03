@@ -13,8 +13,8 @@ services:
     - homepage.href=https://dufs.${DOMAINNAME}/
     - homepage.icon=mdi-file-cabinet
     - homepage.name=Dufs
-    - sablier-station.duration=1m
-    - sablier-station.primary=true
+    - lostack.duration=1m
+    - lostack.primary=true
     - sablier.enable=true
     - sablier.group=dufs
     - traefik.enable=true

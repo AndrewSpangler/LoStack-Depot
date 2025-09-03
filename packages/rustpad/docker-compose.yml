@@ -12,10 +12,10 @@ services:
     - homepage.href=https://rustpad.${DOMAINNAME}/
     - homepage.icon=mdi-note-edit-outline
     - homepage.name=Rustpad
-    - sablier-station.duration=15m
+    - lostack.duration=15m
     - sablier.enable=true
     - sablier.group=rustpad
-    - sablier-station.primary=true
+    - lostack.primary=true
     - traefik.enable=true
     - traefik.http.routers.rustpad.rule=Host(`rustpad.${DOMAINNAME}`)
     - traefik.http.services.rustpad.loadbalancer.server.port=3030

@@ -25,5 +25,5 @@ services:
     - homepage.href=https://pairdrop.${DOMAINNAME}/
     - sablier.enable=true
     - sablier.group=pairdrop
-    - sablier-station.duration=5m
-    - sablier-station.primary=true
+    - lostack.duration=5m
+    - lostack.primary=true

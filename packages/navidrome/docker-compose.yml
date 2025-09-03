@@ -28,5 +28,5 @@ services:
     - homepage.href=https://navidrome.${DOMAINNAME}/
     - sablier.enable=true
     - sablier.group=navidrome
-    - sablier-station.duration=1h
-    - sablier-station.primary=true
+    - lostack.duration=1h
+    - lostack.primary=true

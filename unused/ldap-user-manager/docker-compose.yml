@@ -40,5 +40,5 @@ services:
     - homepage.href=https://ldap-user-manager.${DOMAINNAME}/
     - sablier.enable=true
     - sablier.group=ldap-user-manager
-    - sablier-station.duration=5m
-    - sablier-station.primary=true
+    - lostack.duration=5m
+    - lostack.primary=true

@@ -26,5 +26,5 @@ services:
     - homepage.href=https://${DOMAINNAME}/
     - sablier.enable=true
     - sablier.group=homepage
-    - sablier-station.duration=45m
-    - sablier-station.primary=true
+    - lostack.duration=45m
+    - lostack.primary=true

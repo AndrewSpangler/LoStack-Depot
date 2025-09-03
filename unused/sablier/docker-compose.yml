@@ -18,6 +18,6 @@ services:
     - homepage.icon=mdi-autorenew
     - homepage.description=Auto-Start Containers
     - homepage.href=https://sablier.${DOMAINNAME}/
-    - sablier-station.primary=false
+    - lostack.primary=false
     - sablier.enable=false
     - sablier.group=sablier
