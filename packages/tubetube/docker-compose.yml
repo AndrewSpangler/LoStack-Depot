@@ -23,6 +23,9 @@ services:
     - traefik.enable=true
     - traefik.http.routers.tubetube.rule=Host(`tubetube.${DOMAINNAME}`)
     - traefik.http.services.tubetube.loadbalancer.server.port=6543
+    - lostack.tags=downloader,audio,videos,podcasts,music,mp3,audiobooks
+    - lostack.project_url=https://github.com/MattBlackOnly/TubeTube
+    - lostack.details=TubeTube is a simple YouTube downloader.
     volumes:
     - ${MEDIA_DIR}/downloads/youtube/general:/data/General
     - ${MEDIA_DIR}/downloads/youtube/music:/data/Music

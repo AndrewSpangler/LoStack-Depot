@@ -33,6 +33,9 @@ services:
     - sablier.group=teammapper
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=tools,productivity,diagrams
+    - lostack.project_url=https://github.com/b310-digital/teammapper
+    - lostack.details=Mindmapping made simple! Host and create your own mindmaps. Share your mindmap sessions with your team and collaborate on mindmaps.
   teammapper-postgres:
     image: postgres:12-alpine
     container_name: teammapper-postgres

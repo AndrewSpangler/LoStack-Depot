@@ -23,3 +23,6 @@ services:
     - sablier.group=excalidraw
     - lostack.duration=5m
     - lostack.primary=true
+    - lostack.tags=tools,diagrams,productivity
+    - lostack.project_url=https://github.com/excalidraw/excalidraw
+    - lostack.details=An open source virtual hand-drawn style whiteboard. Collaborative and end-to-end encrypted.

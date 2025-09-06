@@ -18,6 +18,9 @@ services:
     - homepage.name=Ombi
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=requester,media,videos,movies,tv
+    - lostack.project_url=https://github.com/Ombi-app/Ombi
+    - lostack.details=Ombi is your friendly media request tool, automatically syncs with your media servers! Don't worry, it's grandma friendly, and more importantly; has wife approval certification
     - sablier.enable=true
     - sablier.group=ombi
     - traefik.enable=true

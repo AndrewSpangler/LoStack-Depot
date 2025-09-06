@@ -16,6 +16,9 @@ services:
     - homepage.name=Gokapi
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,sharing,privacy,s3,openid
+    - lostack.project_url=https://github.com/Forceu/gokapi
+    - lostack.details=Gokapi is a simple, self-hosted file sharing server with automatic expiration and encryption support — ideal for teams or individuals who want privacy, control, and no clutter.
     - sablier.enable=true
     - sablier.group=gokapi
     - traefik.enable=true

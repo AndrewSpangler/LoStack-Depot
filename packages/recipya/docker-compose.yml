@@ -16,6 +16,9 @@ services:
     - homepage.name=Recipya
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=recipes
+    - lostack.project_url=https://github.com/reaper47/recipya
+    - lostack.details=A clean, simple and powerful recipe manager web application for unforgettable family recipes, empowering you to curate and share your favorite recipes. It is focused on simplicity for the whole family to enjoy.
     - sablier.enable=true
     - sablier.group=recipya
     - traefik.enable=true

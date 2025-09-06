@@ -14,6 +14,9 @@ services:
     - homepage.name=Myspeed
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=tools,network
+    - lostack.project_url=https://github.com/gnmyt/myspeed
+    - lostack.details=A speed test analysis software that shows your internet speed for up to 30 days
     - sablier.enable=true
     - sablier.group=myspeed
     - traefik.enable=true

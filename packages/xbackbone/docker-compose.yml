@@ -18,6 +18,9 @@ services:
     - homepage.name=Xbackbone
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=ssl,dns
+    - lostack.project_url=https://github.com/lissy93/web-check
+    - lostack.details=Get an insight into the inner-workings of a given website. Uncover potential attack vectors, analyse server architecture, view security configurations, and learn what technologies a site is using.
     - sablier.enable=true
     - sablier.group=xbackbone
     - traefik.enable=true

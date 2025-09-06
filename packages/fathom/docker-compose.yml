@@ -42,14 +42,17 @@ services:
       - homepage.group=Analytics
       - homepage.href=https://fathom.${DOMAINNAME}/
       - homepage.icon=mdi-ruler
-      - homepage.name=Fathom
+      - homepage.name=Fathom Lite
       - lostack.duration=15m
       - sablier.enable=true
       - sablier.group=fathom
       - traefik.enable=true
       - traefik.http.routers.fathom.rule=Host(`fathom.${DOMAINNAME}`)
       - traefik.http.services.fathom.loadbalancer.server.port=8080
-      
+      - lostack.tags=privacy
+      - lostack.project_url=https://awesome-docker-compose.com/apps/analytics/fathom
+      - lostack.details=A simple and privacy-focused web analytics (alternative to Google Analytics).
+
   fathom-mysql:
     image: mysql:5
     volumes:

@@ -18,6 +18,9 @@ services:
     - homepage.name=Pyload-ng
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=downloader,files,videos,music,tv
+    - lostack.project_url=https://github.com/pyload/pyload
+    - lostack.details=The free and open-source Download Manager written in pure Python
     - sablier.enable=true
     - sablier.group=pyload-ng
     - traefik.enable=true

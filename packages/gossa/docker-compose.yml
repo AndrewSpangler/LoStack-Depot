@@ -14,6 +14,9 @@ services:
     - homepage.name=Gossa
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,server,sharing,media
+    - lostack.project_url=https://github.com/pldubouilh/gossa
+    - lostack.details=A fast and simple webserver for your files, that's dependency-free and with under 250 lines of code, easy to review.
     - sablier.enable=true
     - sablier.group=gossa
     - traefik.enable=true

@@ -33,9 +33,11 @@ services:
       - sablier.group=nginx-serve
       - traefik.enable=true
       - traefik.http.routers.nginx-serve.rule=Host(`nginx-serve.${DOMAINNAME}`)
-      - traefik.http.services.nginx-serve.loadbalancer.server.port=PORT
+      - traefik.http.services.nginx-serve.loadbalancer.server.port=80
       - lostack.duration=15m
       - lostack.primary=true
-      - "lostack.details=Nginx configured as a simple file server. By default serves LoStack's media/www dir"
-      - lostack.tags=fileserver,lostack
+      - lostack.tags=lostack
       - lostack.login=userless
+      - lostack.tags=files,server,http,https
+      - lostack.project_url=https://github.com/AndrewSpangler/LoStack
+      - lostack.details=LoStack Custom Package - Easily serve files in ${MEDIA_DIR}/www. Nginx with a built-in entrypoint script to configure it to serve files in a directory.

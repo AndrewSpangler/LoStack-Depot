@@ -14,6 +14,9 @@ services:
     - homepage.name=Sftpgo
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=sftp,http,https,ftp,ftps,webdav,s3
+    - lostack.project_url=https://github.com/drakkan/sftpgo
+    - lostack.details=Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud Storage, Azure Blob
     - sablier.enable=true
     - sablier.group=sftpgo
     - traefik.enable=true

@@ -14,6 +14,9 @@ services:
     - homepage.name=Web-check
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=network,security,tools
+    - lostack.project_url=https://github.com/lissy93/web-check
+    - lostack.details=All-in-one OSINT tool for analysing any website. Comprehensive, on-demand open source intelligence for any website
     - sablier.enable=true
     - sablier.group=web-check
     - traefik.enable=true

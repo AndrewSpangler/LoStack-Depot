@@ -29,3 +29,6 @@ services:
     - sablier.group=jupyter
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=ide,python,editor
+    - lostack.project_url=https://github.com/jupyterlab/jupyterlab
+    - lostack.details=An extensible environment for interactive and reproducible computing, based on the Jupyter Notebook and Architecture. JupyterLab is the next-generation user interface for Project Jupyter offering all the familiar building blocks of the classic Jupyter Notebook (notebook, terminal, text editor, file browser, rich outputs, etc.) in a flexible and powerful user interface. JupyterLab can be extended using npm packages that use our public APIs. The prebuilt extensions can be distributed via PyPI, conda, and other package managers. 

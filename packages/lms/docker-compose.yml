@@ -15,6 +15,9 @@ services:
     - homepage.name=Lms
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=server,music,player,media
+    - lostack.project_url=https://github.com/epoupon/lms
+    - lostack.details=LMS is a self-hosted music streaming software. Access your music collection from anywhere using a web interface!
     - sablier.enable=true
     - sablier.group=lms
     - traefik.enable=true

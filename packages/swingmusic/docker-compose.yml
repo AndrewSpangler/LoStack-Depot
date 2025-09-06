@@ -14,6 +14,9 @@ services:
     - homepage.name=Swingmusic
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=server,media,music,audio,player,mp3
+    - lostack.project_url=https://github.com/swingmx/swingmusic
+    - lostack.details=Swing Music is a beautiful, self-hosted music player and streaming server for your local audio files. Like a cooler Spotify … but bring your own music.
     - sablier.enable=true
     - sablier.group=swingmusic
     - traefik.enable=true

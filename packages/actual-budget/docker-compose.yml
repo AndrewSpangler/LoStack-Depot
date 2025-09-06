@@ -14,6 +14,9 @@ services:
     - homepage.name=Actual-budget
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.details=Actual is a local-first personal finance tool based on zero-sum budgeting. It supports synchronization across devices, custom rules, manual transaction importing (from QIF, OFX, and QFX files), and optional automatic synchronization with many banks.
+    - lostack.tags=budgeting,finance,productivity
+    - lostack.project_url=https://github.com/actualbudget/actual
     - sablier.enable=true
     - sablier.group=actual-budget
     - traefik.enable=true

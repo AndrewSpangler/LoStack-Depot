@@ -30,6 +30,10 @@ services:
       - lostack.duration=15m
       - sablier.enable=true
       - sablier.group=cryptgeon
+      - lostack.primary=true
+      - lostack.tags=files,notes
+      - lostack.details=cryptgeon is a secure, open source note / file sharing service inspired by PrivNote written in rust & svelte.
+      - lostack.project_url=https://awesome-docker-compose.com/apps/pastebins/cryptgeon
       - traefik.enable=true
       - traefik.http.routers.cryptgeon.rule=Host(`cryptgeon.${DOMAINNAME}`)
       - traefik.http.services.cryptgeon.loadbalancer.server.port=8000

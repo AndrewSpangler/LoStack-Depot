@@ -17,6 +17,9 @@ services:
     - homepage.name=Metatube
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=videos,downloader,files
+    - lostack.project_url=https://github.com/JVT038/MetaTube
+    - lostack.details=MetaTube downloads video from YouTube and can add metadata from a specified metadata provider on the downloaded file.
     - sablier.enable=true
     - sablier.group=metatube
     - traefik.enable=true

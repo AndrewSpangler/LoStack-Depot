@@ -17,6 +17,9 @@ services:
     - homepage.name=Picoshare
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,sharing,notes,code
+    - lostack.project_url=https://github.com/mtlynch/picoshare
+    - lostack.details=PicoShare is a minimalist service that allows you to share files easily.
     - sablier.enable=true
     - sablier.group=picoshare
     - traefik.enable=true

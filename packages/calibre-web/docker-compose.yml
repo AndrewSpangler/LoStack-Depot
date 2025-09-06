@@ -20,6 +20,9 @@ services:
     - homepage.name=Calibre-web
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.project_url=https://awesome-docker-compose.com/apps/e-books/calibre-web
+    - "lostack.details=Web app providing a clean interface for browsing, reading and downloading eBooks using an existing Calibre database."
+    - lostack.tags=ebooks,media,downloader,administration,files
     - sablier.enable=true
     - sablier.group=calibre-web
     - traefik.enable=true

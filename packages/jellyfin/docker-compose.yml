@@ -18,6 +18,9 @@ services:
     - homepage.name=Jellyfin
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=media,player,server,music,movies,tv,videos,audio
+    - lostack.project_url=https://jellyfin.org/
+    - lostack.details=Jellyfin is the volunteer-built media solution that puts you in control of your media. Stream to any device from your own server, with no strings attached. Your media, your server, your way.
     - sablier.enable=true
     - sablier.group=jellyfin
     - traefik.enable=true

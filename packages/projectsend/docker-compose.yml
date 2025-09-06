@@ -19,6 +19,9 @@ services:
     - homepage.name=Projectsend
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=sharing,files,productivity
+    - lostack.project_url=https://github.com/projectsend/projectsend
+    - lostack.details=ProjectSend is a free, open source software that lets you share files with your clients, focused on ease of use and privacy. It supports clients groups, system users roles, statistics, multiple languages, detailed logs... and much more!
     - sablier.enable=true
     - sablier.group=projectsend
     - traefik.enable=true

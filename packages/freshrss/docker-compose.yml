@@ -54,6 +54,9 @@ services:
     - sablier.group=freshrss
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=rss,scraper,json
+    - lostack.project_url=https://github.com/FreshRSS/FreshRSS
+    - lostack.details=FreshRSS is a self-hosted RSS feed aggregator. It is lightweight, easy to work with, powerful, and customizable. It is a multi-user application with an anonymous reading mode. It supports custom tags. There is an API for (mobile) clients, and a Command-Line Interface.
   freshrss-db:
     image: postgres:15-alpine
     container_name: freshrss-db

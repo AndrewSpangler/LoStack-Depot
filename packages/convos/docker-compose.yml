@@ -16,6 +16,9 @@ services:
     - homepage.name=Convos
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.details=Always online web IRC client.
+    - lostack.tags=irc,chat
+    - lostack.project_url=https://awesome-docker-compose.com/apps/irc/convos
     - sablier.enable=true
     - sablier.group=convos
     - traefik.enable=true

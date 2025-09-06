@@ -14,6 +14,9 @@ services:
     - homepage.name=Sshwifty
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=remote,ssh,telnet
+    - lostack.project_url=https://github.com/nirui/sshwifty
+    - lostack.details=Sshwifty is a SSH and Telnet client made for the Web, allow you to access SSH and Telnet services right from your web browser.
     - sablier.enable=true
     - sablier.group=sshwifty
     - traefik.enable=true

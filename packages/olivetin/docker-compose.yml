@@ -21,3 +21,6 @@ services:
     - sablier.group=olivetin
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=dashboard,automation,tools
+    - lostack.project_url=https://github.com/OliveTin/OliveTin
+    - lostack.details=OliveTin gives safe and simple access to predefined shell commands from a web interface.

@@ -21,6 +21,9 @@ services:
     - homepage.name=Remotely
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=remote
+    - lostack.project_url=https://github.com/immense/Remotely
+    - lostack.details=A remote control and remote scripting solution, built with .NET 8, Blazor, and SignalR.
     - sablier.enable=true
     - sablier.group=remotely
     - traefik.enable=true

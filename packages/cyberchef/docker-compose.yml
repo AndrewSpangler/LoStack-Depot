@@ -20,3 +20,6 @@ services:
     - sablier.group=cyberchef
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.project_url=https://github.com/mpepping/docker-cyberchef/
+    - lostack.tags=tools,security
+    - lostack.details=CyberChef is *the* Cyber Swiss Army Knife web app for encryption, encoding, compression and data analysis.

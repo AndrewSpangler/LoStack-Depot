@@ -25,5 +25,8 @@ services:
     - traefik.enable=true
     - traefik.http.routers.filesharing.rule=Host(`filesharing.${DOMAINNAME}`)
     - traefik.http.services.filesharing.loadbalancer.server.port=80
+    - lostack.tags=files,server
+    - lostack.project_url=https://github.com/axeloz/filesharing
+    - lostack.details=Self-hosted files sharing application, easy to setup, easy to use.
     volumes:
     - ${APPDATA_DIR}/axeloz:/app/storage/content

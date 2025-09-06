@@ -19,6 +19,9 @@ services:
     - homepage.icon=mdi-cat
     - homepage.name=Linx-server
     - lostack.duration=15m
+    - lostack.tags=files,sharing,code,media
+    - lostack.project_url=https://github.com/ZizzyDizzyMC/linx-server
+    - lostack.details=Self-hosted file/code/media sharing website.
     - lostack.primary=true
     - sablier.enable=true
     - sablier.group=linx-server

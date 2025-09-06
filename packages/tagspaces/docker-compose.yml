@@ -14,6 +14,9 @@ services:
     - homepage.name=Tagspaces
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=markdown,files,notes
+    - lostack.project_url=https://github.com/tagspaces/tagspaces
+    - lostack.details=TagSpaces is a free and open-source platform for organizing, tagging, and managing your local files. It runs completely offline, with no need for cloud services, internet connection, or vendor lock-in. 
     - sablier.enable=true
     - sablier.group=tagspaces
     - traefik.enable=true

@@ -17,6 +17,10 @@ services:
     - homepage.name=Cadvisor
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.details=Analyzes resource usage and performance characteristics of running containers.
+    - lostack.project_url=https://awesome-docker-compose.com/apps/container-management/cadvisor
+    - lostack.tags=administration,docker,tools
+    - lostack.project_url=https://hub.docker.com/r/google/cadvisor/
     - sablier.enable=true
     - sablier.group=cadvisor
     - traefik.enable=true

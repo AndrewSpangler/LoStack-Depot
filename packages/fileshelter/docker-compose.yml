@@ -19,5 +19,8 @@ services:
     - traefik.enable=true
     - traefik.http.routers.fileshelter.rule=Host(`fileshelter.${DOMAINNAME}`)
     - traefik.http.services.fileshelter.loadbalancer.server.port=5091
+    - lostack.tags=files,server,sharing
+    - lostack.project_url=https://github.com/epoupon/fileshelter
+    - lostack.details=FileShelter is a self-hosted software that allows you to easily share files over the Internet. Just upload one or more files and get an URL back!
     volumes:
     - ${APPDATA_DIR}/fileshelter:/var/fileshelter

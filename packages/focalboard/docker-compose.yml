@@ -14,6 +14,9 @@ services:
     - homepage.name=Focalboard
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=productivity,tools,planning
+    - lostack.project_url=https://github.com/mattermost-community/focalboard
+    - lostack.details=Focalboard is an open source, multilingual, self-hosted project management tool that's an alternative to Trello, Notion, and Asana.
     - sablier.enable=true
     - sablier.group=focalboard
     - traefik.enable=true

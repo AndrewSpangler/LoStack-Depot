@@ -16,6 +16,9 @@ services:
     - homepage.name=Ulogger
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=gps,maps
+    - lostack.project_url=https://github.com/bfabiszewski/ulogger-server
+    - lostack.details=This is a web application for real-time collection of geolocation data, tracks viewing and management. Together with a dedicated μlogger mobile client it may be used as a complete self hosted server–client solution for logging and monitoring users' geolocation.
     - sablier.enable=true
     - sablier.group=ulogger
     - traefik.enable=true

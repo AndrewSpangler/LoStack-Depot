@@ -19,3 +19,6 @@ services:
     - traefik.enable=true
     - traefik.http.routers.holoplay.rule=Host(`holoplay.${DOMAINNAME}`)
     - traefik.http.services.holoplay.loadbalancer.server.port=3000
+    - lostack.tags=media,files,server,player
+    - lostack.project_url=https://github.com/stephane-r/holoplay-pwa
+    - lostack.details=HoloPlay is a Youtube alternative app using Invidious API. You can save music to favoris or create your playlists. This project is fully open source. If you want add more feature, PM, MR or PR are welcome!

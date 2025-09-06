@@ -11,9 +11,12 @@ services:
     - homepage.group=File Transfer
     - homepage.href=https://pingvin-share.${DOMAINNAME}/
     - homepage.icon=pingvin-share
-    - homepage.name=Pingvin-share
+    - homepage.name=Pingvin Share
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,sharing,notes
+    - lostack.project_url=https://github.com/stonith404/pingvin-share
+    - lostack.details=A self-hosted file sharing platform that combines lightness and beauty, perfect for seamless and efficient file sharing.
     - sablier.enable=true
     - sablier.group=pingvin-share
     - traefik.enable=true

@@ -17,6 +17,9 @@ services:
     - homepage.name=Psitransfer
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,sharing,images
+    - lostack.project_url=https://github.com/psi-4ward/psitransfer
+    - lostack.details=Simple open source self-hosted file sharing solution. It's an alternative to paid services like Dropbox, WeTransfer.
     - sablier.enable=true
     - sablier.group=psitransfer
     - traefik.enable=true

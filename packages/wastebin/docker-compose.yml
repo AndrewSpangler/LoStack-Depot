@@ -15,6 +15,9 @@ services:
     - homepage.name=Wastebin
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,notes
+    - lostack.project_url=https://github.com/matze/wastebin
+    - lostack.details=A minimal pastebin with a design shamelessly copied from bin.
     - sablier.enable=true
     - sablier.group=wastebin
     - traefik.enable=true

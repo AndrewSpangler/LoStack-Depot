@@ -28,6 +28,9 @@ services:
     - sablier.group=miniflux
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=rss,json,atom,opml,search
+    - lostack.project_url=https://github.com/miniflux/v2
+    - lostack.details=Miniflux is a minimalist and opinionated feed reader. It's simple, fast, lightweight and super easy to install. Featuring advanced privacy and organization features.
   miniflux-db:
     image: postgres:15
     container_name: miniflux-db

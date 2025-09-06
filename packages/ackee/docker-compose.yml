@@ -8,9 +8,9 @@ services:
     environment:
       - WAIT_HOSTS=ackee-mongo:27017
       - ACKEE_MONGODB=mongodb://ackee-mongo:27017/ackee
-      - ACKEE_USERNAME=${ACKEE_USERNAME}
-      - ACKEE_PASSWORD=${ACKEE_PASSWORD}
-      - ACKEE_TTL=${ACKEE_TTL}
+      - ACKEE_USERNAME=admin
+      - ACKEE_PASSWORD=${ADMIN_PASSWORD}
+      - ACKEE_TTL=3600000
       - ACKEE_ALLOW_ORIGIN=https://ackee.${DOMAINNAME}
     depends_on:
       - ackee-mongo
@@ -28,6 +28,9 @@ services:
       - "sablier.group=ackee"
       - "lostack.duration=15m"
       - "lostack.primary=true"
+      - "lostack.details=Self-hosted, Node.js based analytics tool for those who care about privacy."
+      - lostack.tags=analytics,privacy,api,graphql
+      - lostack.project_url=https://github.com/electerious/Ackee
 
   ackee-mongo:
     image: mongo

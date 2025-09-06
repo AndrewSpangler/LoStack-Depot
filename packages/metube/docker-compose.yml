@@ -14,6 +14,9 @@ services:
     - homepage.name=Metube
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=downloader,videos,files
+    - lostack.project_url=https://github.com/alexta69/metube
+    - lostack.details=Self-hosted YouTube downloader (web UI for youtube-dl / yt-dlp)
     - sablier.enable=true
     - sablier.group=metube
     - traefik.enable=true

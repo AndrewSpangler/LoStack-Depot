@@ -22,3 +22,6 @@ services:
     - sablier.group=tasks
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,tasks,markdown
+    - lostack.project_url=https://github.com/BaldissaraMatheus/Tasks.md
+    - lostack.details=A self-hosted, Markdown file based task management board.

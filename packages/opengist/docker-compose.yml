@@ -21,3 +21,6 @@ services:
     - sablier.group=opengist
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=git,notes,sharing
+    - lostack.project_url=https://github.com/thomiceli/opengist
+    - lostack.details=Opengist is a self-hosted Pastebin powered by Git. All snippets are stored in a Git repository and can be read and/or modified using standard Git commands, or with the web interface. It is similar to GitHub Gist, but open-source and could be self-hosted.

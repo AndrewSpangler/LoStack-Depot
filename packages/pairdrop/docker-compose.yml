@@ -9,10 +9,10 @@ services:
     environment:
       PUID: 1000
       PGID: 1000
-      WS_FALLBACK: ${PAIRDROP_WS_FALLBACK}
-      RATE_LIMIT: ${PAIRDROP_RATE_LIMIT}
-      RTC_CONFIG: ${PAIRDROP_RTC_CONFIG}
-      DEBUG_MODE: ${PAIRDROP_DEBUG_MODE}
+      WS_FALLBACK: false
+      RATE_LIMIT: false
+      RTC_CONFIG: false
+      DEBUG_MODE: false
       TZ: ${TZ}
     labels:
     - traefik.enable=true
@@ -27,3 +27,6 @@ services:
     - sablier.group=pairdrop
     - lostack.duration=5m
     - lostack.primary=true
+    - lostack.tags=files,sharing
+    - lostack.project_url=https://github.com/schlagmichdoch/pairdrop
+    - lostack.details=Local file sharing in your web browser. Inspired by Apple's AirDrop. Fork of Snapdrop.

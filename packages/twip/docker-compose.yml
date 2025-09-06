@@ -16,6 +16,9 @@ services:
     - homepage.name=Twip
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=server,api,proxy
+    - lostack.project_url=https://github.com/twip/twip
+    - lostack.details=Twitter API proxy in PHP
     - sablier.enable=true
     - sablier.group=twip
     - traefik.enable=true

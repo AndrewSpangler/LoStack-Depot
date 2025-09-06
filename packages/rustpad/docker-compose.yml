@@ -16,6 +16,9 @@ services:
     - sablier.enable=true
     - sablier.group=rustpad
     - lostack.primary=true
+    - lostack.tags=editor,code,tools
+    - lostack.project_url=https://github.com/ekzhang/rustpad
+    - lostack.details=Efficient and minimal collaborative code editor, self-hosted, no database required
     - traefik.enable=true
     - traefik.http.routers.rustpad.rule=Host(`rustpad.${DOMAINNAME}`)
     - traefik.http.services.rustpad.loadbalancer.server.port=3030

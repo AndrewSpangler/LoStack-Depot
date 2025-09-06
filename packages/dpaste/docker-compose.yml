@@ -24,3 +24,7 @@ services:
     - sablier.group=dpaste
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.details=Simple pastebin with multiple text and code option, with short url result easy to remember.
+    - lostack.tags=productivity,notes
+    - lostack.project_url=https://dpaste.org/
+    

@@ -14,6 +14,9 @@ services:
     - homepage.name=Youtube-dl
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=downloader,videos,podcasts
+    - lostack.project_url=https://github.com/nbr23/youtube-dl-server
+    - lostack.details=Simple Web and REST interface for downloading youtube videos onto a server. starlette + yt-dlp / youtube-dl
     - sablier.enable=true
     - sablier.group=youtube-dl
     - traefik.enable=true

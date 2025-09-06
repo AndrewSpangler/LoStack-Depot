@@ -14,6 +14,9 @@ services:
     - homepage.name=Gopeed
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=downloader,bittorrent
+    - lostack.project_url=https://github.com/GopeedLab/gopeed
+    - lostack.details=Gopeed (full name Go Speed), a high-speed downloader developed by Golang + Flutter, supports (HTTP, BitTorrent, Magnet) protocol, and supports all platforms. In addition to basic download functions, Gopeed is also a highly customizable downloader that supports implementing more features through integration with APIs or installation and development of extensions.
     - sablier.enable=true
     - sablier.group=gopeed
     - traefik.enable=true

@@ -36,6 +36,9 @@ services:
     - sablier.group=mixpost
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=social media,chat
+    - lostack.project_url=https://github.com/inovector/mixpost
+    - lostack.details=Mixpost is a robust and versatile social media management platform, designed to streamline social media operations and enhance content marketing strategies. Our platform empowers brands and businesses to effectively manage their online presence, leading them to success in the dynamic digital landscape. Mixpost's mission is to offer a comprehensive and powerful solution, enabling users to elevate their social media management and achieve tangible results.
   mixpost-mysql:
     image: mysql/mysql-server:8.0
     container_name: mixpost-mysql

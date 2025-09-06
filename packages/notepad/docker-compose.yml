@@ -24,3 +24,6 @@ services:
     - sablier.group=notepad
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,sharing,notes,links
+    - lostack.project_url=https://github.com/Athlon1600/notepad
+    - lostack.details=A simple web-based notepad for writing and securely storing notes online. Useful for easy sharing of text between people or devices.

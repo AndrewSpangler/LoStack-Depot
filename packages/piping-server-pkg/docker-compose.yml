@@ -14,6 +14,9 @@ services:
     - homepage.name=Piping-server-pkg
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=server,files,sharing
+    - lostack.project_url=https://github.com/nwtgck/piping-server
+    - lostack.details=Infinitely transfer between every device over pure HTTP with pipes or browsers
     - sablier.enable=true
     - sablier.group=piping-server-pkg
     - traefik.enable=true

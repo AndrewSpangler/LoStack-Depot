@@ -17,6 +17,9 @@ services:
     - homepage.name=Stump
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=server,ebooks,comics,manga,opds
+    - lostack.project_url=https://github.com/stumpapp/stump
+    - lostack.details=A free and open source comics, manga and digital book server with OPDS support
     - sablier.enable=true
     - sablier.group=stump
     - traefik.enable=true

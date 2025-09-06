@@ -39,6 +39,10 @@ services:
       - lostack.duration=15m
       - sablier.enable=true
       - sablier.group=aptabase
+      - lostack.primary=true
+      - lostack.details=Open source, privacy first and simple analytics for mobile and desktop apps.
+      - lostack.tags=analytics,privacy
+      - lostack.project_url=https://github.com/aptabase/aptabase
       - traefik.enable=true
       - traefik.http.routers.aptabase.rule=Host(`aptabase.${DOMAINNAME}`)
       - traefik.http.services.aptabase.loadbalancer.server.port=8080

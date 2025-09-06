@@ -63,6 +63,9 @@ services:
     - sablier.group=gitea
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=git,files,server,ldap
+    - lostack.project_url=https://github.com/go-gitea/gitea
+    - lostack.details=Git with a cup of tea! Painless self-hosted all-in-one software development service, including Git hosting, code review, team collaboration, package registry and CI/CD
   gitea-db:
     image: mariadb:10.11
     container_name: gitea-db

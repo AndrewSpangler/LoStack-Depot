@@ -21,3 +21,6 @@ services:
     - sablier.group=lenpaste
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=notes
+    - lostack.project_url=https://github.com/lcomrade/lenpaste
+    - lostack.details=Lenpaste is a web service that allows you to share notes anonymously, an alternative to Pastebin. There is its own API.

@@ -19,3 +19,6 @@ services:
     - traefik.enable=true
     - traefik.http.routers.geo2tz.rule=Host(`geo2tz.${DOMAINNAME}`)
     - traefik.http.services.geo2tz.loadbalancer.server.port=2004
+    - lostack.tags=gps,timezone,maps
+    - lostack.project_url=https://github.com/noandrea/geo2tz
+    - lostack.details=A self-host-able service to get the timezone given geo-coordinates (lat/lng)

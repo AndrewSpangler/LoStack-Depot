@@ -13,6 +13,9 @@ services:
     - homepage.name=Pictshare
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,sharing,audio,videos,notes,code
+    - lostack.project_url=https://github.com/HaschekSolutions/pictshare
+    - lostack.details=PictShare is an open source image, mp4, pastebin hosting service with a simple resizing and upload API that you can host yourself. 
     - sablier.enable=true
     - sablier.group=pictshare
     - traefik.enable=true

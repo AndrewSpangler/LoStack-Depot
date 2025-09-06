@@ -22,3 +22,5 @@ services:
     - sablier.group=bepasty
     - lostack.duration=30m
     - lostack.primary=true
+    - lostack.details=A pastebin for all kinds of files.
+    - lostack.project_url=https://github.com/asmaps/bepasty-docker

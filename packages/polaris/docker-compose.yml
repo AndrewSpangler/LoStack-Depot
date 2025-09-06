@@ -14,6 +14,9 @@ services:
     - homepage.name=Polaris
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=server,media,audio,music,mp3,player
+    - lostack.project_url=https://github.com/agersant/polaris
+    - lostack.details=Polaris is a music streaming application, designed to let you enjoy your music collection from any computer or mobile device.
     - sablier.enable=true
     - sablier.group=polaris
     - traefik.enable=true

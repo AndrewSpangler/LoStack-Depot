@@ -18,6 +18,9 @@ services:
     - homepage.name=Piwigo
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=photos,image,sharing,media
+    - lostack.project_url=https://github.com/Piwigo/Piwigo
+    - lostack.details=Manage your photos with Piwigo, a full featured open source photo gallery application for the web. Star us on Github! More than 200 plugins and themes available. Join us and contribute!
     - sablier.enable=true
     - sablier.group=piwigo
     - traefik.enable=true

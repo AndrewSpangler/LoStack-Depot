@@ -17,6 +17,9 @@ services:
     - homepage.name=Quickshare
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,sharing
+    - lostack.project_url=https://github.com/ihexxa/quickshare
+    - lostack.details=Quick and simple file sharing between different devices, built with Go, React and Typescript.
     - sablier.enable=true
     - sablier.group=quickshare
     - traefik.enable=true

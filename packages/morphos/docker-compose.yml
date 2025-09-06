@@ -21,3 +21,6 @@ services:
     - sablier.group=morphos
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,converter,server
+    - lostack.project_url=https://github.com/danvergara/morphos
+    - lostack.details=Self-hosted file converter server

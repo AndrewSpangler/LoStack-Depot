@@ -18,6 +18,9 @@ services:
     - homepage.name=H5ai
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=server,files
+    - lostack.project_url=https://github.com/lrsjng/h5ai/
+    - lostack.details=A modern HTTP web server index for Apache httpd, lighttpd, and nginx.
     - sablier.enable=true
     - sablier.group=h5ai
     - traefik.enable=true

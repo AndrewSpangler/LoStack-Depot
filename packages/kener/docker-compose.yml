@@ -21,6 +21,9 @@ services:
     - homepage.name=Kener
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=dashboard,monitoring
+    - lostack.project_url=https://github.com/rajnandan1/kener
+    - lostack.details=Kener is a sleek and lightweight status page system built with SvelteKit and NodeJS. It’s not here to replace heavyweights like Datadog or Atlassian but rather to offer a simple, modern, and hassle-free way to set up a great-looking status page with minimal effort.
     - sablier.enable=true
     - sablier.group=kener
     - traefik.enable=true

@@ -16,6 +16,9 @@ services:
     - homepage.name=Yt-dlp-webui
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=downloader,videos
+    - lostack.project_url=https://github.com/marcopiovanello/yt-dlp-web-ui
+    - lostack.details=A terrible web ui and RPC server for yt-dlp. Designed to be self-hosted.
     - sablier.enable=true
     - sablier.group=yt-dlp-webui
     - traefik.enable=true

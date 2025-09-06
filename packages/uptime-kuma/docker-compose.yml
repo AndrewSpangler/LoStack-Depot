@@ -14,6 +14,9 @@ services:
     - homepage.name=Uptime-kuma
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=monitoring,dashboard
+    - lostack.project_url=https://github.com/louislam/uptime-kuma
+    - lostack.details=A fancy self-hosted monitoring tool
     - sablier.enable=true
     - sablier.group=uptime-kuma
     - traefik.enable=true

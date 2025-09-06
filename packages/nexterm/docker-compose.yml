@@ -14,6 +14,9 @@ services:
     - homepage.name=Nexterm
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=ssh,vnc,rdp,sftp,managment
+    - lostack.project_url=https://github.com/gnmyt/Nexterm
+    - lostack.details=The open source server management software for SSH, VNC & RDP. Supports SFTP.
     - sablier.enable=true
     - sablier.group=nexterm
     - traefik.enable=true

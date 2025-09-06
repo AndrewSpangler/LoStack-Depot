@@ -14,6 +14,9 @@ services:
     - homepage.name=Thelounge
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=irc,chat
+    - lostack.project_url=https://github.com/thelounge/thelounge
+    - lostack.details=Modern, responsive, cross-platform, self-hosted web IRC client
     - sablier.enable=true
     - sablier.group=thelounge
     - traefik.enable=true

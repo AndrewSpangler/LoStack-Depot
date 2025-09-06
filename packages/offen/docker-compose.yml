@@ -22,6 +22,9 @@ services:
       - homepage.name=Offen
       - lostack.duration=15m
       - lostack.primary=true
+      - lostack.tags=analytics,privacy
+      - lostack.project_url=https://github.com/offen/offen
+      - lostack.details=Let your users access their data. Gain valuable insights at the same time. Open, lightweight, self hosted and free.
       - sablier.enable=true
       - sablier.group=offen
       - traefik.enable=true

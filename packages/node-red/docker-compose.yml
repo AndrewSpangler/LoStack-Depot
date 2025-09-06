@@ -16,6 +16,9 @@ services:
     - homepage.name=Node-red
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=automation,tools,productivity
+    - lostack.project_url=https://github.com/node-red/node-red
+    - lostack.details=Low-code programming for event-driven applications.
     - sablier.enable=true
     - sablier.group=node-red
     - traefik.enable=true

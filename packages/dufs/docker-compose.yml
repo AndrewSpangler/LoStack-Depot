@@ -20,5 +20,8 @@ services:
     - traefik.enable=true
     - traefik.http.routers.dufs.rule=Host(`dufs.${DOMAINNAME}`)
     - traefik.http.services.dufs.loadbalancer.server.port=5000
+    - lostack.details=A file server that supports static serving, uploading, searching, accessing control, webdav…
+    - lostack.tags=files,server
+    - lostack.project_url=https://awesome-docker-compose.com/apps/file-transfer---web-based-file-managers/dufs
     volumes:
     - ${APPDATA_DIR}/dufs:/data

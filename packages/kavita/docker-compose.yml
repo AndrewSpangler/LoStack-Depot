@@ -26,3 +26,6 @@ services:
     - sablier.group=kavita
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=ebooks,reader,comics,epub,opds,manga,pdf
+    - lostack.project_url=https://github.com/Kareadita/Kavita
+    - lostack.details=Kavita is a fast, feature rich, cross platform reading server. Built with the goal of being a full solution for all your reading needs. Setup your own server and share your reading collection with your friends and family.

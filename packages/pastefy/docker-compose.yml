@@ -31,6 +31,9 @@ services:
     - sablier.group=pastefy
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=files,sharing,notes,code
+    - lostack.project_url=https://github.com/interaapps/pastefy
+    - lostack.details=Pastefy is an open source alternative to Gists or Pastebin. You want to share some code to your friends or just save it for yourself? Just paste it. Try out the public instance https://pastefy.app
   pastefy-db:
     image: mariadb:10.11
     hostname: pastefy-db

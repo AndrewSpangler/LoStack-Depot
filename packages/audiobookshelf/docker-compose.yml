@@ -26,3 +26,6 @@ services:
     - sablier.group=audiobookshelf
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.details=Fully open-source self-hosted audiobook and podcast server. It streams all audio formats, keeps and syncs progress across devices. Comes with open-source apps for Android and iOS.
+    - lostack.tags=audio,audiobooks,player,server,mp3
+    - lostack.project_url=https://github.com/advplyr/audiobookshelf

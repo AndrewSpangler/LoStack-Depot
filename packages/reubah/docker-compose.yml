@@ -23,3 +23,6 @@ services:
     - sablier.group=reubah
     - lostack.duration=15m
     - lostack.primary=true
+    - lostack.tags=server,images,converter,tools
+    - lostack.project_url=https://github.com/dendianugerah/reubah/tree/main
+    - lostack.details=A web-based tool for processing images and converting documents with a simple interface

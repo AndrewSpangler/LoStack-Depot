@@ -23,5 +23,8 @@ services:
     - traefik.enable=true
     - traefik.http.routers.overseerr.rule=Host(`overseerr.${DOMAINNAME}`)
     - traefik.http.services.overseerr.loadbalancer.server.port=5055
+    - lostack.tags=requester
+    - lostack.project_url=https://github.com/sct/overseerr
+    - lostack.details=Overseerr is a free and open source software application for managing requests for your media library. It integrates with your existing services, such as Sonarr, Radarr, and Plex!
     volumes:
     - ${APPDATA_DIR}/overseerr:/config

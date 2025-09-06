@@ -23,6 +23,9 @@ services:
     - lostack.duration=15m
     - lostack.primary=true
     - lostack.additional-config=true
+    - lostack.tags=files
+    - lostack.details=Portable file server with accelerated resumable uploads, deduplication, WebDAV, FTP, zeroconf, media indexer, video thumbnails, audio transcoding, and write-only folders, in a single file with no mandatory dependencies.
+    - lostack.project_url=https://awesome-docker-compose.com/apps/file-transfer---web-based-file-managers/copyparty
     - sablier.enable=true
     - sablier.group=copyparty
     - traefik.enable=true

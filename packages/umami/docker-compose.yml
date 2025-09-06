@@ -28,6 +28,10 @@ services:
       - homepage.icon=umami
       - homepage.name=Umami
       - lostack.duration=15m
+      - lostack.tags=analytics,privacy
+      - lostack.project_url=https://github.com/umami-software/umami
+      - lostack.details=Umami is a simple, fast, privacy-focused alternative to Google Analytics.
+      - lostack.primary=true
       - sablier.enable=true
       - sablier.group=umami
       - traefik.enable=true

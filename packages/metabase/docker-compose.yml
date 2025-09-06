@@ -28,6 +28,9 @@ services:
       - homepage.name=Metabase
       - lostack.duration=15m
       - lostack.primary=true
+      - lostack.tags=analytics,data,productivity
+      - lostack.project_url=https://github.com/metabase/metabase
+      - lostack.details=Metabase is the easy, open-source way for everyone in your company to ask questions and learn from data.
       - sablier.enable=true
       - sablier.group=metabase
       - traefik.enable=true
